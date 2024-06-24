@@ -1,19 +1,46 @@
-﻿namespace HerBudget
+﻿using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
+using UglyToad.PdfPig;
+
+namespace HerBudget
 {
     public class WorkerPdf
     {
-        private string fileStorage { get; set; }
-        private string reDetail { get; set; }
-        private string reYear { get; set; }
-        private string pdfDoc { get; set; }
+        private string FileStorage { get; set; }
+        private string ReDetail { get; set; }
+        private string ReYear { get; set; }
+        private string PdfDoc { get; set; }
+        private string PageText { get; set; }
+
 
         public WorkerPdf(string fileStorage, string pdfDoc)
         {
-            this.fileStorage = fileStorage;
-            this.pdfDoc = pdfDoc;
-            this.reDetail = "(?:\\n((?:0[1-9]|1[1,2])/(?:0[1-9]|[12][0-9]|3[01]))\\s*(.+)" +
+            this.FileStorage = fileStorage;
+            this.PdfDoc = pdfDoc;
+            this.ReDetail = "(?:\\n((?:0[1-9]|1[1,2])/(?:0[1-9]|[12][0-9]|3[01]))\\s*(.+)" +
                 " ((?:-\\d+\\.\\d{2})|(?:\\d+\\.\\d{2})))";
-            this.reYear = "\\d{2}";
+            this.ReYear = "\\d{2}";
+            this.PageText = "";
+        }
+
+        /// <summary>
+        /// Retrieves third page of pdf and converts to .txt file
+        /// </summary>
+        /// <param name="pdfPath">PDF file location</param>
+        /// <returns>pdf content in string text</returns>
+        private string PreparePdf(string pdfPath)
+        {
+            try
+            {
+                using (PdfDocument doc = PdfDocument.Open(pdfPath))
+                {
+                    this.PageText = ContentOrderTextExtractor.GetText(doc.GetPage(3));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("**PDF file not included in folder. Copy from Python project**", ex.Message);
+            }
+            return this.PageText;
         }
     }
 }
