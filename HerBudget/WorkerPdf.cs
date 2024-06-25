@@ -1,5 +1,7 @@
 ﻿using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
 using UglyToad.PdfPig;
+using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace HerBudget
 {
@@ -41,6 +43,27 @@ namespace HerBudget
                 throw new ArgumentException("**PDF file not included in folder. Copy from Python project**", ex.Message);
             }
             return this.PageText;
+        }
+
+        /// <summary>
+        /// Finds date, detail, and amount of each expense.
+        /// Adds the data to an arraylist.
+        /// </summary>
+        /// <returns>ArrayList of expense details</returns>
+        public ArrayList CreateExpenseList()
+        {
+            string pdfText = PreparePdf(this.PdfDoc);
+            MatchCollection matches = Regex.Matches(pdfText, this.ReDetail);
+            ArrayList ExpenseList = new ArrayList();
+            foreach (Match match in matches)
+            {
+                var temp = new ArrayList();
+                temp.Add(match.Groups[1].Value);
+                temp.Add(match.Groups[2].Value);
+                temp.Add(double.Parse(match.Groups[3].Value));
+                ExpenseList.Add(temp);
+            }
+            return ExpenseList;
         }
     }
 }

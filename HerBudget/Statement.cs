@@ -35,47 +35,6 @@ namespace HerBudget
         }
 
         /// <summary>
-        /// Retrieves third page of pdf and converts to .txt file
-        /// </summary>
-        /// <param name="pdfPath">PDF file location</param>
-        /// <returns>pdf content in string text</returns>
-        private string PreparePdf(string pdfPath)
-        {
-            try
-            {
-                using (PdfDocument doc = PdfDocument.Open(pdfPath))
-                {
-                    this.PageText = ContentOrderTextExtractor.GetText(doc.GetPage(3));
-                }
-            }
-            catch(Exception ex)
-            {
-                throw new ArgumentException("**PDF file not included in folder. Copy from Python project**", ex.Message);
-            }
-            return this.PageText;
-        }
-
-        /// <summary>
-        /// Finds date, detail, and amount of each expense.
-        /// Adds the data to an arraylist.
-        /// </summary>
-        /// <returns>ArrayList of expense details</returns>
-        private ArrayList CreateExpenseList()
-        {
-            string pdfText = PreparePdf(this.PathPdf);
-            MatchCollection matches = Regex.Matches(pdfText, this.Pattern);
-            foreach (Match match in matches)
-            {
-                var temp = new ArrayList();
-                temp.Add(match.Groups[1].Value);
-                temp.Add(match.Groups[2].Value);
-                temp.Add(double.Parse(match.Groups[3].Value));
-                this.ExpList.Add(temp);
-            }
-            return this.ExpList;
-        }
-
-        /// <summary>
         /// Prints full list for debugging
         /// </summary>
         /// <param name="expenses">experience list generated on Program.cs</param>
@@ -92,9 +51,10 @@ namespace HerBudget
         /// </summary>
         public void SendToDatabase()
         {
+            WorkerPdf wp = new WorkerPdf("idStore.txt", this.PathPdf);
             Database db = new Database();
             db.OpenConnection();
-            db.CreateTable(CreateExpenseList());
+            db.CreateTable(wp.CreateExpenseList());
             db.CloseDatabase();
         }
     }
