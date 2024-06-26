@@ -51,7 +51,8 @@ namespace HerBudget
         /// </summary>
         public void SendToDatabase()
         {
-            WorkerPdf wp = new WorkerPdf("idStore.txt", this.PathPdf);
+            string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/idStore.txt";
+            WorkerPdf wp = new WorkerPdf(PdfNameStorage, this.PathPdf);
             Database db = new Database();
             db.OpenConnection();
             db.CreateTable(wp.CreateExpenseList());

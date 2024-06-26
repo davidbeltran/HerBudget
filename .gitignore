@@ -1,3 +1,4 @@
 # ignore all pdf and text files
 *.pdf
 *.vsidx
+*.txt

@@ -24,6 +24,27 @@ namespace HerBudget
             this.PageText = "";
         }
 
+        private bool SearchForPdf()
+        {
+            if (File.Exists(this.FileStorage))
+            {
+                try
+                {
+                    StreamReader sr = new StreamReader(this.FileStorage);
+                    string PdfFiles = sr.ReadToEnd();
+                    if (Regex.IsMatch(PdfFiles, this.PdfDoc))
+                    {
+                        return true;
+                    }
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine("Error reading the idStore.txt file", ex.Message);
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// Retrieves third page of pdf and converts to .txt file
         /// </summary>
