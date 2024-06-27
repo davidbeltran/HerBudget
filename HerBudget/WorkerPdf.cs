@@ -30,11 +30,13 @@ namespace HerBudget
             {
                 try
                 {
-                    StreamReader sr = new StreamReader(this.FileStorage);
-                    string PdfFiles = sr.ReadToEnd();
-                    if (Regex.IsMatch(PdfFiles, this.PdfDoc))
+                    using (StreamReader sr = new StreamReader(this.FileStorage))
                     {
-                        return true;
+                        string PdfFiles = sr.ReadToEnd();
+                        if (Regex.IsMatch(PdfFiles, this.PdfDoc))
+                        {
+                            return true;
+                        }
                     }
                 }
                 catch (IOException ex)
@@ -42,7 +44,35 @@ namespace HerBudget
                     Console.WriteLine("Error reading the idStore.txt file", ex.Message);
                 }
             }
+            else
+            {
+                File.CreateText(this.FileStorage);
+            }
             return false;
+        }
+
+        public bool CheckDuplicatePdf()
+        {
+            if (!SearchForPdf())
+            {
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(this.FileStorage, true))
+                    {
+                        sw.WriteLine(this.PdfDoc);
+                    }
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                return false;
+            }
+            else
+            {
+                Console.WriteLine($"{this.PdfDoc} has already been processed.");
+            }
+            return true;
         }
 
         /// <summary>
