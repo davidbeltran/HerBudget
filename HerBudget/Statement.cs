@@ -53,11 +53,10 @@ namespace HerBudget
         {
             string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/idStore.txt";
             WorkerPdf wp = new WorkerPdf(PdfNameStorage, this.PathPdf);
-            Console.WriteLine(wp.CheckDuplicatePdf());
-            //Database db = new Database();
-            //db.OpenConnection();
-            //db.CreateTable(wp.CreateExpenseList());
-            //db.CloseDatabase();
+            Database db = new Database();
+            db.OpenConnection();
+            db.CreateTable(wp.CreateExpenseList());
+            db.CloseDatabase();
         }
     }
 }

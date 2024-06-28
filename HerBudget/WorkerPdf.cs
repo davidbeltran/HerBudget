@@ -30,13 +30,11 @@ namespace HerBudget
             {
                 try
                 {
-                    using (StreamReader sr = new StreamReader(this.FileStorage))
+                    using StreamReader sr = new StreamReader(this.FileStorage);
+                    string PdfFiles = sr.ReadToEnd();
+                    if (Regex.IsMatch(PdfFiles, this.PdfDoc))
                     {
-                        string PdfFiles = sr.ReadToEnd();
-                        if (Regex.IsMatch(PdfFiles, this.PdfDoc))
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                 }
                 catch (IOException ex)
@@ -46,7 +44,7 @@ namespace HerBudget
             }
             else
             {
-                File.CreateText(this.FileStorage);
+                File.CreateText(this.FileStorage).Close();
             }
             return false;
         }
@@ -57,10 +55,8 @@ namespace HerBudget
             {
                 try
                 {
-                    using (StreamWriter sw = new StreamWriter(this.FileStorage, true))
-                    {
-                        sw.WriteLine(this.PdfDoc);
-                    }
+                    using StreamWriter sw = new StreamWriter(this.FileStorage, true);
+                    sw.WriteLine(this.PdfDoc);
                 }
                 catch (IOException ex)
                 {
