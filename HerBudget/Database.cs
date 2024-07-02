@@ -12,24 +12,16 @@ namespace HerBudget
     /// </summary>
     public class Database
     {
-        private MySqlConnection? conn;
-        private string? server;
-        private string? database;
-        private string? uid;
-        private string? password;
+        private readonly MySqlConnection conn;
+        private readonly string server;
+        private readonly string database;
+        private readonly string uid;
+        private readonly string password;
 
         /// <summary>
         /// Database class constructor
         /// </summary>
         public Database()
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Instantiates MySQL connection for Database constructor
-        /// </summary>
-        private void Initialize()
         {
             this.server = "localhost";
             this.database = "expenses";
@@ -44,7 +36,7 @@ namespace HerBudget
         /// Opens MySQL connection
         /// Mostly created to ensure connection was made when initially designed Database class
         /// </summary>
-        public void OpenConnection()
+        private void OpenConnection()
         {
             try
             {
@@ -62,6 +54,7 @@ namespace HerBudget
         /// <param name="expenses">ArrayList made from pdf file</param>
         public void CreateTable(ArrayList expenses)
         {
+            OpenConnection();
             string sqlTable = "CREATE TABLE Transactions (" +
                 "Date varchar(15)," +
                 "Details text," +
@@ -77,33 +70,8 @@ namespace HerBudget
             }
             finally
             {
-                if (TableFull() == false)
-                {
-                    FillTable(expenses);
-                }
-                else
-                {
-                    Console.WriteLine("Table has already been filled.");
-                }
+                FillTable(expenses);
             }
-        }
-
-        /// <summary>
-        /// Checks if 'Transactions' has been filled
-        /// </summary>
-        /// <returns>boolian checking for empty table</returns>
-        private bool TableFull()
-        {
-            string findCount = "use " + this.database + "; select count(*) from Transactions;";
-            MySqlCommand cmd = new MySqlCommand(findCount, this.conn);
-            int rowCount = int.Parse(cmd.ExecuteScalar().ToString()!);// '!' is null forgiving operator
-
-            if (rowCount > 0)
-            {
-                return true;
-            }
-            return false;
-
         }
 
         /// <summary>
