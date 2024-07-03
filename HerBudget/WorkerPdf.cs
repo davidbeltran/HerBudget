@@ -71,6 +71,17 @@ namespace HerBudget
             return true;
         }
 
+        private int GetYear()
+        {
+            MatchCollection matches = Regex.Matches(this.PdfDoc, this.ReYear);
+            string year = "";
+            foreach (Match match in matches)
+            {
+                year = match.Value;
+            }
+            return Convert.ToInt32(year);
+        }
+
         /// <summary>
         /// Retrieves third page of pdf and converts to .txt file
         /// </summary>

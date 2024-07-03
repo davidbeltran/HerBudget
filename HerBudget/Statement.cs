@@ -63,19 +63,3 @@ namespace HerBudget
     }
 }
 
-
-/// Extra code 
-
-/// <summary>
-/// This would extract every page from the PDF file
-/// </summary>
-//foreach(Page page in document.GetPages())
-//{
-//    var text = ContentOrderTextExtractor.GetText(page);
-//    pageText += text;
-//}
-
-/// <summary>
-/// Takes PDF text and loads to txt file
-/// </summary>
-//File.WriteAllText(pathTxt, pageText);
