@@ -18,7 +18,6 @@ namespace HerBudget
         private string ReDetail { get; set; }
         private string ReYear { get; set; }
         private string PdfDoc { get; set; }
-        private string PageText { get; set; }
 
         /// <summary>
         /// Constructor with given regex patterns
