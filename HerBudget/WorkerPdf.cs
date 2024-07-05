@@ -110,6 +110,7 @@ namespace HerBudget
         /// <returns>pdf content in string text</returns>
         private string PreparePdf(string pdfPath)
         {
+            string PageText = "";
             try
             {
                 using (PdfDocument doc = PdfDocument.Open(pdfPath))
