@@ -56,7 +56,7 @@ namespace HerBudget
         {
             OpenConnection();
             string sqlTable = "CREATE TABLE Transactions (" +
-                "Date varchar(15)," +
+                "Date varchar(25)," +
                 "Details text," +
                 "Amount float)";
             MySqlCommand cmd = new MySqlCommand(sqlTable, this.conn);

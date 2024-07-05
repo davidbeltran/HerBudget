@@ -1,10 +1,17 @@
-﻿using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
+﻿/*
+ * Author: David Beltran
+ */
+
+using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
 using UglyToad.PdfPig;
 using System.Collections;
 using System.Text.RegularExpressions;
 
 namespace HerBudget
 {
+    /// <summary>
+    /// Handles pdf formatting and specific data retrieval
+    /// </summary>
     public class WorkerPdf
     {
         private string FileStorage { get; set; }
@@ -13,7 +20,11 @@ namespace HerBudget
         private string PdfDoc { get; set; }
         private string PageText { get; set; }
 
-
+        /// <summary>
+        /// Constructor with given regex patterns
+        /// </summary>
+        /// <param name="fileStorage"></param>
+        /// <param name="pdfDoc"></param>
         public WorkerPdf(string fileStorage, string pdfDoc)
         {
             this.FileStorage = fileStorage;
@@ -24,6 +35,10 @@ namespace HerBudget
             this.PageText = "";
         }
 
+        /// <summary>
+        /// Finds PDF file name in storage file if it exists
+        /// </summary>
+        /// <returns>true if file name exists. false if it does not exist</returns>
         private bool SearchForPdf()
         {
             if (File.Exists(this.FileStorage))
@@ -49,6 +64,10 @@ namespace HerBudget
             return false;
         }
 
+        /// <summary>
+        /// Writes pdf file name into storage if file has never been processed
+        /// </summary>
+        /// <returns>returns false if pdf file has never been processed</returns>
         public bool CheckDuplicatePdf()
         {
             if (!SearchForPdf())
@@ -71,7 +90,11 @@ namespace HerBudget
             return true;
         }
 
-        private int GetYear()
+        /// <summary>
+        /// Scrapes pdf file name to find year of expenses
+        /// </summary>
+        /// <returns>string of year</returns>
+        private string GetYear()
         {
             MatchCollection matches = Regex.Matches(this.PdfDoc, this.ReYear);
             string year = "";
@@ -79,7 +102,7 @@ namespace HerBudget
             {
                 year = match.Value;
             }
-            return Convert.ToInt32(year);
+            return year;
         }
 
         /// <summary>
@@ -106,6 +129,7 @@ namespace HerBudget
         /// <summary>
         /// Finds date, detail, and amount of each expense.
         /// Adds the data to an arraylist.
+        /// Parses string date into DateTime type and string amount into double type.
         /// </summary>
         /// <returns>ArrayList of expense details</returns>
         public ArrayList CreateExpenseList()
@@ -116,7 +140,7 @@ namespace HerBudget
             foreach (Match match in matches)
             {
                 var temp = new ArrayList();
-                temp.Add(match.Groups[1].Value);
+                temp.Add(DateTime.Parse($"{match.Groups[1].Value}/{GetYear()}"));
                 temp.Add(match.Groups[2].Value);
                 temp.Add(double.Parse(match.Groups[3].Value));
                 ExpenseList.Add(temp);
