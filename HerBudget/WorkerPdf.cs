@@ -32,7 +32,6 @@ namespace HerBudget
             this.ReDetail = "(?:\\n((?:0[1-9]|1[1,2])/(?:0[1-9]|[12][0-9]|3[01]))\\s*(.+)" +
                 " ((?:-\\d+\\.\\d{2})|(?:\\d+\\.\\d{2})))";
             this.ReYear = "\\d{2}";
-            this.PageText = "";
         }
 
         /// <summary>
@@ -116,14 +115,14 @@ namespace HerBudget
             {
                 using (PdfDocument doc = PdfDocument.Open(pdfPath))
                 {
-                    this.PageText = ContentOrderTextExtractor.GetText(doc.GetPage(3));
+                    PageText = ContentOrderTextExtractor.GetText(doc.GetPage(3));
                 }
             }
             catch (Exception ex)
             {
                 throw new ArgumentException("**PDF file not included in folder. Copy from Python project**", ex.Message);
             }
-            return this.PageText;
+            return PageText;
         }
 
         /// <summary>
