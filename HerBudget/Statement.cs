@@ -31,11 +31,11 @@ namespace HerBudget
         public void SendToDatabase()
         {
             string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/idStore.txt";
-            WorkerPdf wp = new WorkerPdf(PdfNameStorage, this.PathPdf);
-            if (!wp.CheckDuplicatePdf())
+            ChasePdfWorker cpw = new ChasePdfWorker(PdfNameStorage, this.PathPdf);
+            if (!cpw.CheckDuplicatePdf())
             {
                 Database db = new Database();
-                db.CreateTable(wp.CreateExpenseList());
+                db.CreateTable(cpw.CreateExpenseList());
                 db.CloseDatabase();
             }
         }
