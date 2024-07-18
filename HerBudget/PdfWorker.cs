@@ -96,7 +96,7 @@ namespace HerBudget
             {
                 using (PdfDocument doc = PdfDocument.Open(pdfDoc))
                 {
-                    PageText = ContentOrderTextExtractor.GetText(doc.GetPage(3));
+                    PageText = ContentOrderTextExtractor.GetText(doc.GetPages());//.GetPage(3)
                 }
             }
             catch (Exception ex)

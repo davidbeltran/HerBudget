@@ -2,11 +2,6 @@
  * Author: David Beltran
  */
 
-using System.Collections;
-using System.Text.RegularExpressions;
-using UglyToad.PdfPig;
-using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
-
 namespace HerBudget
 {
     /// <summary>
@@ -32,12 +27,13 @@ namespace HerBudget
         {
             string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/idStore.txt";
             ChasePdfWorker cpw = new ChasePdfWorker(PdfNameStorage, this.PathPdf);
-            if (!cpw.CheckDuplicatePdf())
-            {
-                Database db = new Database();
-                db.CreateTable(cpw.CreateExpenseList());
-                db.CloseDatabase();
-            }
+            cpw.CreateExpenseList();
+            //if (!cpw.CheckDuplicatePdf())
+            //{
+            //    Database db = new Database();
+            //    db.CreateTable(cpw.CreateExpenseList());
+            //    db.CloseDatabase();
+            //}
         }
     }
 }
