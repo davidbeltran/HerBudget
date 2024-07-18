@@ -27,7 +27,8 @@ namespace HerBudget
         {
             string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/idStore.txt";
             ChasePdfWorker cpw = new ChasePdfWorker(PdfNameStorage, this.PathPdf);
-            cpw.CreateExpenseList();
+            AllyPdfWorker apw = new AllyPdfWorker(PdfNameStorage, this.PathPdf);
+            apw.CreateExpenseList();
             //if (!cpw.CheckDuplicatePdf())
             //{
             //    Database db = new Database();

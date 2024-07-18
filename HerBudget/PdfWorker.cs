@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
 using UglyToad.PdfPig;
+using UglyToad.PdfPig.Content;
 
 namespace HerBudget
 {
@@ -96,7 +97,12 @@ namespace HerBudget
             {
                 using (PdfDocument doc = PdfDocument.Open(pdfDoc))
                 {
-                    PageText = ContentOrderTextExtractor.GetText(doc.GetPages());//.GetPage(3)
+                    int counter = 1;
+                    foreach (Page page in doc.GetPages())
+                    {
+                        PageText += ContentOrderTextExtractor.GetText(doc.GetPage(counter));
+                        counter++;
+                    }
                 }
             }
             catch (Exception ex)
