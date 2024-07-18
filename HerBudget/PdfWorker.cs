@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Text.RegularExpressions;
+using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
+using UglyToad.PdfPig;
 
 namespace HerBudget
 {
@@ -87,7 +89,22 @@ namespace HerBudget
             return year;
         }
 
-        public abstract string PreparePdf(string pdfDoc);
+        protected string PreparePdf(string pdfDoc)
+        {
+            string PageText = "";
+            try
+            {
+                using (PdfDocument doc = PdfDocument.Open(pdfDoc))
+                {
+                    PageText = ContentOrderTextExtractor.GetText(doc.GetPage(3));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("**PDF file not included in folder. Copy from Python project**", ex.Message);
+            }
+            return PageText;
+        }
 
         public abstract ArrayList CreateExpenseList();
     }

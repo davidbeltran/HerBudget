@@ -19,22 +19,22 @@ namespace HerBudget
         /// <param name="pdfDoc"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public override string PreparePdf(string pdfDoc)
-        {
-            string PageText = "";
-            try
-            {
-                using (PdfDocument doc = PdfDocument.Open(pdfDoc))
-                {
-                    PageText = ContentOrderTextExtractor.GetText(doc.GetPage(3));
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException("**PDF file not included in folder. Copy from Python project**", ex.Message);
-            }
-            return PageText;
-        }
+        //public override string PreparePdf(string pdfDoc)
+        //{
+        //    string PageText = "";
+        //    try
+        //    {
+        //        using (PdfDocument doc = PdfDocument.Open(pdfDoc))
+        //        {
+        //            PageText = ContentOrderTextExtractor.GetText(doc.GetPage(3));
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new ArgumentException("**PDF file not included in folder. Copy from Python project**", ex.Message);
+        //    }
+        //    return PageText;
+        //}
 
         /// <summary>
         /// Finds date, detail, and amount of each expense.
