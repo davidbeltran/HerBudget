@@ -35,7 +35,7 @@ namespace HerBudget
                 "SLING.COM 888-363-1777",
                 "KAISER HPTS 8664734938",
                 "DeltaCare PREMIUM~ Future Amount: 14.83 ~ Tran: ACHDW",
-                "Requested transfer to ALLY BANK"
+                "Requested transfer to ALLY BANK Savings"
             };
             if (BillCat.Contains(detail))
             {
