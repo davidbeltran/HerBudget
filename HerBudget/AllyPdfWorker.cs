@@ -7,8 +7,8 @@ namespace HerBudget
     {
         public AllyPdfWorker(string fileStorage, string pdfDoc) : base(fileStorage, pdfDoc)
         {
-            this.ReDetail = @"\n((?:0[1-9]|1[1,2])/(?:0[1-9]|[1-2][0-9]|3[0-1])/(?:\d{4})).*" +
-                @"\n(.*\n)";// (\$\d+\.\d{2})";
+            this.ReDetail = @"\n((?:0[1-9]|1[1,2])/(?:0[1-9]|[1-2][0-9]|3[0-1])/(?:\d{4})) " +
+                @"(?:Check Card Purchase\n|ACH Withdrawal\n|Direct Deposit\n|)";
         }
         public override ArrayList CreateExpenseList()
         {
@@ -23,3 +23,9 @@ namespace HerBudget
         }
     }
 }
+// Check Card Purchase
+// ACH Withdrawal
+// Direct Deposit
+// WEB Funds Transfer
+// NOW Withdrawal
+// NOW Deposit
