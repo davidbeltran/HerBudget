@@ -10,8 +10,10 @@ namespace HerBudget
         {
             this.ReDetail = "(?:((?:0[1-9]|1[1,2])/(?:0[1-9]|[1-2][0-9]|3[0-1])/(?:\\d{4})) " +
             "(?:Check Card Purchase|ACH Withdrawal|Direct Deposit|WEB Funds Transfer|NOW Withdrawal|NOW Deposit)\\s" +
-            "\\n(.*\\s)(?:.*\\s)?" +
-            "\\$(\\d+\\.\\d{2}) -\\$(\\d+\\.\\d{2}))";
+            "\\n(.*\\s)(?:.*\\s)*?" +
+            //"\\$(\\d+\\.\\d{2}) -\\$(\\d+\\.\\d{2}))";
+            //"\\$(.+\\.\\d{2}) -\\$(\\d+\\.\\d{2}))";
+            "\\$(.+\\.\\d{2}) -\\$(.+\\.\\d{2}) (?:-?\\$.+\\.\\d{2}\\s))";
         }
         public override ArrayList CreateExpenseList()
         {
