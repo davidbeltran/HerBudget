@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Text.RegularExpressions;
-using System;
 
 namespace HerBudget
 {
@@ -9,8 +8,9 @@ namespace HerBudget
         public AllyPdfWorker(string fileStorage, string pdfDoc) : base(fileStorage, pdfDoc)
         {
             this.ReDetail = "(?:((?:0[1-9]|1[1,2])/(?:0[1-9]|[1-2][0-9]|3[0-1])/(?:\\d{4})) " +
-            "(Check Card Purchase|ACH Withdrawal|Direct Deposit|WEB Funds Transfer|NOW Withdrawal|NOW Deposit|eCheck Deposit)\\s" +
-            "\\n(.*\\s)(?:.*\\s)*?\\$(.+\\.\\d{2}) -\\$(.+\\.\\d{2}) (?:-?\\$.+\\.\\d{2}[\\s|A]))";
+            "(Check Card Purchase|ACH Withdrawal|Direct Deposit|Interest Paid|" +
+            "WEB Funds Transfer|NOW Withdrawal|NOW Deposit|eCheck Deposit)\\s" +
+            "(\\n.*\\s)?(?:.*\\s)*?\\$(.+\\.\\d{2}) -\\$(.+\\.\\d{2}) (?:-?\\$.+\\.\\d{2}[\\s|A]))";
         }
         public override ArrayList CreateExpenseList()
         {
@@ -26,6 +26,8 @@ namespace HerBudget
                 count++;
             }
             Console.WriteLine($"Number: {count}");
+            //StreamWriter sw = new StreamWriter("D:/afterGrad/c#/Adelisa/HerBudget/pdfs/test.txt");
+            //sw.WriteLine(pdfText);
             return ExpenseList;
         }
     }
