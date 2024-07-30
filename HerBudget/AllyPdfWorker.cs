@@ -17,15 +17,28 @@ namespace HerBudget
             string pdfText = PreparePdf(this.PdfDoc);
             MatchCollection matches = Regex.Matches(pdfText, this.ReDetail);
             ArrayList ExpenseList = new ArrayList();
-            int count = 0;
+
             foreach (Match match in matches)
             {
-                string detail = match.Groups[2].ToString().Replace("\n", "");
-                Console.WriteLine($"Date: {match.Groups[1]} || Detail1:{match.Groups[2]} ||Detail2:{match.Groups[3]}" +
-                    $"|| Amount1: {match.Groups[4]} || Amount2: {match.Groups[5]}\n");
-                count++;
+                DateTime date = DateTime.Parse(match.Groups[1].Value.Trim());
+                string detail1 = match.Groups[2].ToString().Trim();
+                string detail2 = match.Groups[3].ToString().Trim();
+                double amount1 = double.Parse(match.Groups[4].Value.Trim());
+                double amount2 = double.Parse((match.Groups[5].Value.Trim()));
+                var temp = new ArrayList();
+                temp.Add(date);
+                temp.Add(detail1);
+                temp.Add(detail2);
+                temp.Add(amount1);
+                temp.Add(amount2);
+                ExpenseList.Add(temp);
             }
-            Console.WriteLine($"Number: {count}");
+            foreach (ArrayList exp in ExpenseList)
+            {
+                //Console.WriteLine("date: " + exp[0] + " detail1: " + exp[1] + " detail2: " + exp[2] + " amount1: " + exp[3] + " amount2: " + exp[4]);
+                Console.WriteLine($"Date: {exp[0]} || Detail1:{exp[1]} ||Detail2:{exp[2]}" +
+                    $"|| Amount1: {exp[3]} || Amount2: {exp[4]}\n");
+            }
             //StreamWriter sw = new StreamWriter("D:/afterGrad/c#/Adelisa/HerBudget/pdfs/test.txt");
             //sw.WriteLine(pdfText);
             return ExpenseList;

@@ -16,17 +16,18 @@ namespace HerBudget
             string pdfText = PreparePdf(this.PdfDoc);
             MatchCollection matches = Regex.Matches(pdfText, this.ReDetail);
             ArrayList ExpenseList = new ArrayList();
-            string skip = "Payment Thank You-Mobile";
+
             foreach (Match match in matches)
             {
-                if (match.Groups[2].Value == skip)
+                double amount = double.Parse(match.Groups[3].Value);
+                if (amount < 0)
                 {
                     continue;
                 }
                 var temp = new ArrayList();
                 temp.Add(DateTime.Parse($"{match.Groups[1].Value}/{GetYear()}"));
                 temp.Add(match.Groups[2].Value);
-                temp.Add(double.Parse(match.Groups[3].Value));
+                temp.Add(amount);
                 ExpenseList.Add(temp);
             }
             return ExpenseList;

@@ -29,6 +29,7 @@ namespace HerBudget
             ChasePdfWorker cpw = new ChasePdfWorker(PdfNameStorage, this.PathPdf);
             AllyPdfWorker apw = new AllyPdfWorker(PdfNameStorage, this.PathPdf);
             apw.CreateExpenseList();
+            //cpw.CreateExpenseList();
             //if (!cpw.CheckDuplicatePdf())
             //{
             //    Database db = new Database();
