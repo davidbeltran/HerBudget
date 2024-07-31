@@ -35,7 +35,6 @@ namespace HerBudget
             }
             foreach (ArrayList exp in ExpenseList)
             {
-                //Console.WriteLine("date: " + exp[0] + " detail1: " + exp[1] + " detail2: " + exp[2] + " amount1: " + exp[3] + " amount2: " + exp[4]);
                 Console.WriteLine($"Date: {exp[0]} || Detail1:{exp[1]} ||Detail2:{exp[2]}" +
                     $"|| Amount1: {exp[3]} || Amount2: {exp[4]}\n");
             }
