@@ -26,9 +26,13 @@ namespace HerBudget
                 }
                 var temp = new ArrayList();
                 temp.Add(DateTime.Parse($"{match.Groups[1].Value}/{GetYear()}"));
-                temp.Add(match.Groups[2].Value);
+                temp.Add(match.Groups[2].Value.ToUpper());
                 temp.Add(amount);
                 ExpenseList.Add(temp);
+            }
+            foreach (ArrayList exp in  ExpenseList)
+            {
+                Console.WriteLine($"Date: {exp[0]} || Detail1:{exp[1]} || Amount: {exp[2]}\n");
             }
             return ExpenseList;
         }

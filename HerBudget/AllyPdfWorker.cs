@@ -16,31 +16,34 @@ namespace HerBudget
         {
             string pdfText = PreparePdf(this.PdfDoc);
             MatchCollection matches = Regex.Matches(pdfText, this.ReDetail);
-            ArrayList ExpenseList = new ArrayList();
+            ArrayList Expenses = new ArrayList();
 
             foreach (Match match in matches)
             {
                 DateTime date = DateTime.Parse(match.Groups[1].Value.Trim());
-                string detail1 = match.Groups[2].ToString().Trim();
-                string detail2 = match.Groups[3].ToString().Trim();
+                string detail1 = match.Groups[2].ToString().Trim().ToUpper();
+                string detail2 = match.Groups[3].ToString().Trim().ToUpper();
                 double amount1 = double.Parse(match.Groups[4].Value.Trim());
                 double amount2 = double.Parse((match.Groups[5].Value.Trim()));
-                var temp = new ArrayList();
-                temp.Add(date);
-                temp.Add(detail1);
-                temp.Add(detail2);
-                temp.Add(amount1);
-                temp.Add(amount2);
-                ExpenseList.Add(temp);
+
+                Expense exp = new Expense(date, detail2, amount2);
+                Expenses.Add(exp);
             }
-            foreach (ArrayList exp in ExpenseList)
+            foreach (Expense exp in  Expenses)
             {
-                Console.WriteLine($"Date: {exp[0]} || Detail1:{exp[1]} ||Detail2:{exp[2]}" +
-                    $"|| Amount1: {exp[3]} || Amount2: {exp[4]}\n");
+                if (exp.Category.Equals(CategoryType.EXPENSE))
+                {
+                    Console.WriteLine($"detail: {exp.Detail} || category: {exp.Category}\n");
+                }
             }
+            //foreach (ArrayList exp in ExpenseList)
+            //{
+            //    Console.WriteLine($"Date: {exp[0]} || Detail1:{exp[1]} ||Detail2:{exp[2]}" +
+            //        $"|| Amount1: {exp[3]} || Amount2: {exp[4]}\n");
+            //}
             //StreamWriter sw = new StreamWriter("D:/afterGrad/c#/Adelisa/HerBudget/pdfs/test.txt");
             //sw.WriteLine(pdfText);
-            return ExpenseList;
+            return Expenses;
         }
     }
 }
