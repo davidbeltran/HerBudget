@@ -31,10 +31,11 @@ namespace HerBudget
             }
             foreach (Expense exp in  Expenses)
             {
-                if (exp.Category.Equals(CategoryType.EXPENSE))
-                {
-                    Console.WriteLine($"detail: {exp.Detail} || category: {exp.Category}\n");
-                }
+                //if (exp.Category.Equals(CategoryType.BILL))
+                //{
+                //    Console.WriteLine($"detail: {exp.Detail} || category: {exp.Category} || sub: {exp.SubCategory}\n");
+                //}
+                Console.WriteLine($"detail: {exp.Detail} || category: {exp.Category} || sub: {exp.SubCategory}\n");
             }
             //foreach (ArrayList exp in ExpenseList)
             //{
