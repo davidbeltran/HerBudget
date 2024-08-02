@@ -26,24 +26,32 @@ namespace HerBudget
                 double amount1 = double.Parse(match.Groups[4].Value.Trim());
                 double amount2 = double.Parse((match.Groups[5].Value.Trim()));
 
-                Expense exp = new Expense(date, detail2, amount2);
+                string detail = "";
+                if (detail2.Equals(""))
+                {
+                    detail = detail1;
+                } 
+                else
+                {
+                    detail = detail2;
+                }
+
+                double amount = 0;
+                if (amount1.Equals(0))
+                {
+                    amount = amount2;
+                }
+                else
+                {
+                    amount += amount1;
+                }
+                Expense exp = new Expense(date, detail, amount);
                 Expenses.Add(exp);
             }
             foreach (Expense exp in  Expenses)
             {
-                //if (exp.Category.Equals(CategoryType.BILL))
-                //{
-                //    Console.WriteLine($"detail: {exp.Detail} || category: {exp.Category} || sub: {exp.SubCategory}\n");
-                //}
-                Console.WriteLine($"detail: {exp.Detail} || category: {exp.Category} || sub: {exp.SubCategory}\n");
+                Console.WriteLine($"date: {exp.Date} || detail: {exp.Detail} || amount: {exp.Amount} || category: {exp.Category} || sub: {exp.SubCategory}\n");
             }
-            //foreach (ArrayList exp in ExpenseList)
-            //{
-            //    Console.WriteLine($"Date: {exp[0]} || Detail1:{exp[1]} ||Detail2:{exp[2]}" +
-            //        $"|| Amount1: {exp[3]} || Amount2: {exp[4]}\n");
-            //}
-            //StreamWriter sw = new StreamWriter("D:/afterGrad/c#/Adelisa/HerBudget/pdfs/test.txt");
-            //sw.WriteLine(pdfText);
             return Expenses;
         }
     }

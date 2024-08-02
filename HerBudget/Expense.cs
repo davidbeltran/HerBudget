@@ -8,7 +8,7 @@ namespace HerBudget
         public DateTime Date {  get; set; }
         public string Detail { get; set; }
         public double Amount { get; set; }
-        public CategoryType Category { get; set; }
+        public CategoryType? Category { get; set; }
         public SubCategoryType? SubCategory { get; set; }
 
         public Expense(DateTime date, string detail, double Amount)
