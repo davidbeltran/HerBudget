@@ -19,21 +19,23 @@ namespace HerBudget
 
             foreach (Match match in matches)
             {
+                DateTime date = DateTime.Parse($"{match.Groups[1].Value}/{GetYear()}");
+                string detail = match.Groups[2].Value.ToUpper();
                 double amount = double.Parse(match.Groups[3].Value);
                 if (amount < 0)
                 {
                     continue;
                 }
-                var temp = new ArrayList();
-                temp.Add(DateTime.Parse($"{match.Groups[1].Value}/{GetYear()}"));
-                temp.Add(match.Groups[2].Value.ToUpper());
-                temp.Add(amount);
-                ExpenseList.Add(temp);
+                Expense exp = new Expense(date, detail, amount);
+                ExpenseList.Add(exp);
             }
-            foreach (ArrayList exp in  ExpenseList)
+            int count = 0;
+            foreach (Expense exp in ExpenseList)
             {
-                Console.WriteLine($"Date: {exp[0]} || Detail1:{exp[1]} || Amount: {exp[2]}\n");
+                Console.WriteLine($"Date: {exp.Date} || Detail1:{exp.Detail} || Amount: {exp.Amount} || Category: {exp.Category} || Subcategory: {exp.SubCategory}\n");
+                count++;
             }
+            Console.WriteLine(count);
             return ExpenseList;
         }
     }

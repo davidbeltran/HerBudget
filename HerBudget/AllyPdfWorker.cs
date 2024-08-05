@@ -57,13 +57,6 @@ namespace HerBudget
                 }
                 Expenses.Add(exp);
             }
-            int count = 0;
-            foreach (Expense exp in  Expenses)
-            {
-                Console.WriteLine($"date: {exp.Date} || detail: {exp.Detail} || amount: {exp.Amount} || category: {exp.Category} || sub: {exp.SubCategory}\n\n");
-                count++;
-            }
-            Console.WriteLine(count);
             return Expenses;
         }
     }
