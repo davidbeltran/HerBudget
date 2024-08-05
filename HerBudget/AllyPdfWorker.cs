@@ -26,8 +26,13 @@ namespace HerBudget
                 double amount1 = double.Parse(match.Groups[4].Value.Trim());
                 double amount2 = double.Parse((match.Groups[5].Value.Trim()));
 
-                string detail = "";
-                if (detail2.Equals(""))
+                string detail;
+
+                if (detail2.Equals("REQUESTED TRANSFER FROM ALLY BANK"))
+                {
+                    continue;
+                }
+                else if (detail2.Equals(""))
                 {
                     detail = detail1;
                 } 
@@ -36,22 +41,29 @@ namespace HerBudget
                     detail = detail2;
                 }
 
-                double amount = 0;
+                double amount;
                 if (amount1.Equals(0))
                 {
                     amount = amount2;
                 }
                 else
                 {
-                    amount += amount1;
+                    amount = amount1;
                 }
                 Expense exp = new Expense(date, detail, amount);
+                if (amount.Equals(amount1))
+                {
+                    exp.Category = CategoryType.INCOME;
+                }
                 Expenses.Add(exp);
             }
+            int count = 0;
             foreach (Expense exp in  Expenses)
             {
-                Console.WriteLine($"date: {exp.Date} || detail: {exp.Detail} || amount: {exp.Amount} || category: {exp.Category} || sub: {exp.SubCategory}\n");
+                Console.WriteLine($"date: {exp.Date} || detail: {exp.Detail} || amount: {exp.Amount} || category: {exp.Category} || sub: {exp.SubCategory}\n\n");
+                count++;
             }
+            Console.WriteLine(count);
             return Expenses;
         }
     }
