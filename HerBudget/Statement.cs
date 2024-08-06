@@ -25,16 +25,16 @@ namespace HerBudget
         /// </summary>
         public void SendToDatabase()
         {
-            string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/idStore.txt";
+            string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/pdfs/idStore.txt";
             ChasePdfWorker cpw = new ChasePdfWorker(PdfNameStorage, this.PathPdf);
             AllyPdfWorker apw = new AllyPdfWorker(PdfNameStorage, this.PathPdf);
-            cpw.CreateExpenseList();
-            //if (!cpw.CheckDuplicatePdf())
-            //{
-            //    Database db = new Database();
-            //    db.CreateTable(cpw.CreateExpenseList());
-            //    db.CloseDatabase();
-            //}
+            //cpw.CreateExpenseList();
+            if (!apw.CheckDuplicatePdf())
+            {
+                Database db = new Database();
+                db.CreateTable(apw.CreateExpenseList());
+                db.CloseDatabase();
+            }
         }
     }
 }

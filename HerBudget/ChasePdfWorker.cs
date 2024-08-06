@@ -22,20 +22,18 @@ namespace HerBudget
                 DateTime date = DateTime.Parse($"{match.Groups[1].Value}/{GetYear()}");
                 string detail = match.Groups[2].Value.ToUpper();
                 double amount = double.Parse(match.Groups[3].Value);
-                if (amount < 0)
+                if ((amount < 0) && (!Regex.IsMatch(detail, "OFFER:")))
                 {
                     continue;
                 }
                 Expense exp = new Expense(date, detail, amount);
-                ExpenseList.Add(exp);
+                if ((amount < 0) && (Regex.IsMatch(detail, "OFFER:")))
+                {
+                    exp.Amount = Math.Abs(amount);
+                    exp.Category = CategoryType.INCOME;
+                }
+                    ExpenseList.Add(exp);
             }
-            int count = 0;
-            foreach (Expense exp in ExpenseList)
-            {
-                Console.WriteLine($"Date: {exp.Date} || Detail1:{exp.Detail} || Amount: {exp.Amount} || Category: {exp.Category} || Subcategory: {exp.SubCategory}\n");
-                count++;
-            }
-            Console.WriteLine(count);
             return ExpenseList;
         }
     }

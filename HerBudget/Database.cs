@@ -58,7 +58,9 @@ namespace HerBudget
             string sqlTable = "CREATE TABLE Transactions (" +
                 "Date varchar(25)," +
                 "Details text," +
-                "Amount float)";
+                "Amount float," +
+                "Category text," +
+                "Subcategory text)";
             MySqlCommand cmd = new MySqlCommand(sqlTable, this.conn);
             try
             {
@@ -84,15 +86,18 @@ namespace HerBudget
         /// - Research SQL injection... Does this pass?
         private void FillTable(ArrayList expenses)
         {
-            string fillTable = "INSERT INTO Transactions(Date, Details, Amount) VALUES (@Date, @Details, @Amount)";
+            string fillTable = "INSERT INTO Transactions(Date, Details, Amount, Category, Subcategory) " +
+                "VALUES (@Date, @Details, @Amount, @Category, @Subcategory)";
             MySqlCommand cmd = new MySqlCommand(fillTable, this.conn);
             
-            foreach (ArrayList exp in expenses)
+            foreach (Expense exp in expenses)
             {
                 cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@Date", exp[0]);
-                cmd.Parameters.AddWithValue("@Details", exp[1]);
-                cmd.Parameters.AddWithValue("@Amount", exp[2]);
+                cmd.Parameters.AddWithValue("@Date", exp.Date);
+                cmd.Parameters.AddWithValue("@Details", exp.Detail);
+                cmd.Parameters.AddWithValue("@Amount", exp.Amount);
+                cmd.Parameters.AddWithValue("@Category", exp.Category.ToString());
+                cmd.Parameters.AddWithValue("@Subcategory", exp.SubCategory.ToString());
                 cmd.ExecuteNonQuery();
             }
         }
