@@ -2,6 +2,8 @@
  * Author: David Beltran
  */
 
+using System.Text.RegularExpressions;
+
 namespace HerBudget
 {
     /// <summary>
@@ -25,16 +27,29 @@ namespace HerBudget
         /// </summary>
         public void SendToDatabase()
         {
-            string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/pdfs/idStore.txt";
-            ChasePdfWorker cpw = new ChasePdfWorker(PdfNameStorage, this.PathPdf);
-            AllyPdfWorker apw = new AllyPdfWorker(PdfNameStorage, this.PathPdf);
-            //cpw.CreateExpenseList();
-            if (!apw.CheckDuplicatePdf())
+            PdfWorker worker = CreateWorker();
+            if (!worker.CheckDuplicatePdf())
             {
                 Database db = new Database();
-                db.CreateTable(apw.CreateExpenseList());
+                db.CreateTable(worker.CreateExpenseList());
                 db.CloseDatabase();
             }
+        }
+
+        private PdfWorker CreateWorker()
+        {
+            string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/pdfs/idStore.txt";
+            string ReBank = "A\\.pdf|C\\.pdf";
+            Match m = Regex.Match(this.PathPdf, ReBank);
+            PdfWorker? worker = null;
+            switch (m.Value)
+            {
+                case "A.pdf":
+                    worker = new AllyPdfWorker(PdfNameStorage, this.PathPdf); break;
+                case "C.pdf":
+                    worker = new ChasePdfWorker(PdfNameStorage, this.PathPdf); break;
+            }
+            return worker!;
         }
     }
 }
