@@ -61,3 +61,4 @@ D:\afterGrad\c#\Adelisa\HerBudget\HerBudget\bin\Debug\net8.0\runtimes\win\lib\ne
 D:\afterGrad\c#\Adelisa\HerBudget\HerBudget\bin\Debug\net8.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\afterGrad\c#\Adelisa\HerBudget\HerBudget\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\afterGrad\c#\Adelisa\HerBudget\HerBudget\obj\Debug\net8.0\HerBudget.sourcelink.json
+D:\afterGrad\c#\Adelisa\HerBudget\HerBudget\bin\Debug\net8.0\Microsoft.Office.Interop.Excel.dll
