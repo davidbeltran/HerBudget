@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "d6+cfbDsQROsK81cHeRTez5S/70Bkuo9FQQ5ol/Mh3WzgF9wN/SffjcfKasRL143rkualsn+l6WLWpqMVLvCwg==",
+  "dgSpecHash": "ibsoymT/LiJeZ6KKgO4xdTGjp/sPuEpIpLnWPoWTOnomMIU9LfS7xi8czKBQ/kZBu8OYk90m+G8CdsvwlG1Q4w==",
   "success": true,
   "projectFilePath": "D:\\afterGrad\\c#\\Adelisa\\HerBudget\\HerBudget\\HerBudget.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\David Beltran\\.nuget\\packages\\k4os.hash.xxhash\\1.0.8\\k4os.hash.xxhash.1.0.8.nupkg.sha512",
     "C:\\Users\\David Beltran\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\David Beltran\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\David Beltran\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1001\\microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512",
     "C:\\Users\\David Beltran\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\David Beltran\\.nuget\\packages\\mysql.data\\8.3.0\\mysql.data.8.3.0.nupkg.sha512",
     "C:\\Users\\David Beltran\\.nuget\\packages\\pdfpig\\0.1.8\\pdfpig.0.1.8.nupkg.sha512",
