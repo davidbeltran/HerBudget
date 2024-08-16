@@ -29,13 +29,13 @@ namespace HerBudget
         {
             string fullPath = MakeDirectory() + @"\Finances.xlsx";
             Excel.Application excel = new Excel.Application();
-            //excel.Visible = false;
+            excel.Visible = false;
 
-            //Excel.Workbook workbook = excel.Workbooks.Add();
-            //Excel._Worksheet worksheet = (Excel.Worksheet) excel.ActiveSheet;
-            //MakeHeaders(worksheet);
-            //workbook.SaveAs(fullPath);
-            //workbook.Close();
+            Excel.Workbook workbook = excel.Workbooks.Add();
+            Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
+            MakeHeaders(worksheet);
+            workbook.SaveAs(fullPath);
+            workbook.Close();
 
             Console.WriteLine(fullPath);
         }

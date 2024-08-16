@@ -11,7 +11,8 @@
           "Microsoft.Office.Interop.Excel": "15.0.4795.1001",
           "MySql.Data": "8.3.0",
           "PdfPig": "0.1.8",
-          "System.Collections.NonGeneric": "4.3.0"
+          "System.Collections.NonGeneric": "4.3.0",
+          "OFFICE": "15.0.0.0"
         },
         "runtime": {
           "HerBudget.dll": {}
@@ -385,6 +386,14 @@
             "fileVersion": "0.7.1.0"
           }
         }
+      },
+      "OFFICE/15.0.0.0": {
+        "runtime": {
+          "OFFICE.DLL": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.0.4613.1000"
+          }
+        }
       }
     }
   },
@@ -673,6 +682,11 @@
       "sha512": "sha512-Idgg+mJEyAujqDPzA3APy9dNoyw0YQcNA65GgYjktDRtJ+nvx/hv+J+m6Eax3JJMGEYGy04oc5YNP6ZvQ3Y1vQ==",
       "path": "zstdsharp.port/0.7.1",
       "hashPath": "zstdsharp.port.0.7.1.nupkg.sha512"
+    },
+    "OFFICE/15.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
