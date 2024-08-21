@@ -20,7 +20,7 @@ namespace HerBudget
         }
         private void Categorize()
         {
-            string ReCat = "CENTRE CLUB|SPECTRUM|UNITED FIN CAS INS|SO CAL EDISON|SO CAL GAS|" +
+            string ReCat = "CENTRE CLUB|SPECTRUM|UNITED FIN CAS INS|SO CAL EDISON|SO CAL GAS|DISNEY|" +
                 "ATT PAYMENT|HULU|PEACOCK|SLING|KAISER|DELTACARE|REQUESTED TRANSFER TO ALLY BANK SAVINGS";
 
             if (Regex.IsMatch(this.Detail, ReCat))
@@ -48,7 +48,7 @@ namespace HerBudget
                     this.SubCategory = SubCategoryType.GAS_HOME; break;
                 case "ATT PAYMENT":
                     this.SubCategory = SubCategoryType.PHONES; break;
-                case "HULU" or "PEACOCK" or "SLING":
+                case "HULU" or "PEACOCK" or "SLING" or "DISNEY":
                     this.SubCategory = SubCategoryType.TV; break;
                 case "KAISER":
                     this.SubCategory = SubCategoryType.HEALTHCARE; break;
