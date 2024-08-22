@@ -79,10 +79,6 @@ namespace HerBudget
             sheet.Cells[11, 3] = Savings;
             sheet.Cells[24, 3] = Income;
 
-            foreach (Expense exp in NonBills)
-            {
-                Console.WriteLine($"Detail: {exp.Detail} | sub: {exp.Category}");
-            }
             return NonBills;
         }
 

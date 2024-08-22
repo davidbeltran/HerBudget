@@ -28,6 +28,7 @@ namespace HerBudget
 
                 string detail;
 
+                //May need to add or statement to include unseen transfers from accounts outside Ally
                 if (detail2.Equals("REQUESTED TRANSFER FROM ALLY BANK"))
                 {
                     continue;

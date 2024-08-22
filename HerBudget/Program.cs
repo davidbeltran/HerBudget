@@ -9,7 +9,7 @@ namespace HerBudget
     {
         static void Main(string[] args)
         {
-            string pathPdf = "D:/afterGrad/c#/Adelisa/HerBudget/pdfs/JunJul24A.pdf";
+            string pathPdf = "D:/afterGrad/c#/Adelisa/HerBudget/pdfs/FebMar24A.pdf";
 
             Statement stmt = new Statement(pathPdf);
             stmt.SendToDatabase();
