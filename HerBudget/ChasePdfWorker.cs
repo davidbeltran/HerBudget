@@ -31,8 +31,9 @@ namespace HerBudget
                 {
                     exp.Amount = Math.Abs(amount);
                     exp.Category = CategoryType.INCOME;
+                    exp.SubCategory = null;
                 }
-                    ExpenseList.Add(exp);
+                ExpenseList.Add(exp);
             }
             return ExpenseList;
         }
