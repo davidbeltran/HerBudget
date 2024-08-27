@@ -36,6 +36,9 @@ namespace HerBudget
             //}
             Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
             ss.AddToExcel();
+            //Console.WriteLine("Enter name:");
+            //string? aqui = Console.ReadLine();
+            //Console.WriteLine($"hola, {aqui}");
         }
 
         private PdfWorker CreateWorker()

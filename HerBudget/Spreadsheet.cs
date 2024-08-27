@@ -1,5 +1,6 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System.Collections;
+using System.Text.RegularExpressions;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HerBudget
@@ -64,6 +65,7 @@ namespace HerBudget
                 }
                 else
                 {
+                    AskUser(exp);
                     NonBills.Add(exp);
                 }
             }
@@ -78,8 +80,27 @@ namespace HerBudget
             sheet.Cells[10, 3] = Healthcare;
             sheet.Cells[11, 3] = Savings;
             sheet.Cells[24, 3] = Income;
-
+            
             return NonBills;
+        }
+
+        private Expense AskUser(Expense exp)
+        {
+            string? ResponseCheck;
+            while (true)
+            {
+                Console.WriteLine("Was this the correct selection?");
+                ResponseCheck = Console.ReadLine();
+                if (ResponseCheck!.ToLower() == "n" || ResponseCheck!.ToLower() == "no")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Checking again.");
+                }
+            }
+            return exp;
         }
 
         /// <summary>
