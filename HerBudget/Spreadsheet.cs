@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Excel;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.Office.Interop.Excel;
 using System.Collections;
 using System.Text.RegularExpressions;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -39,11 +40,12 @@ namespace HerBudget
             workbook.Close();
         }
 
-        private ArrayList AddBills(Excel._Worksheet sheet)
+        private void AddBills(Excel._Worksheet sheet)
         {
             double Internet = 0, Car_Insurance = 0, Housing = 0, Energy = 0, Gas = 0, Income = 0,
-                Phones = 0, Entertainment = 0, Dental = 0, Healthcare = 0, Savings = 0;
-            ArrayList NonBills = new ArrayList();
+                Phones = 0, Entertainment = 0, Dental = 0, Healthcare = 0, Savings = 0, Car_Gas = 0,
+                Groceries = 0, Restaurant = 0, Necessary = 0, Unnecessary = 0;
+            DisplayInstructions();
             foreach (Expense exp in  Expenses)
             {
                 if (!exp.Category.Equals(CategoryType.EXPENSE))
@@ -65,10 +67,18 @@ namespace HerBudget
                 }
                 else
                 {
-                    AskUser(exp);
-                    NonBills.Add(exp);
+                    Expense newExp = AskUser(exp);
+                    switch(exp.SubCategory)
+                    {
+                        case SubCategoryType.GAS_CAR: Car_Gas += exp.Amount; break;
+                        case SubCategoryType.GROCERIES: Groceries += exp.Amount; break;
+                        case SubCategoryType.RESTAURANT: Restaurant += exp.Amount; break;
+                        case SubCategoryType.MISC_NECESSARY: Necessary += exp.Amount; break;
+                        case SubCategoryType.MISC_UNNECESSARY: Unnecessary += exp.Amount; break;
+                    }
                 }
             }
+            //BILLS
             sheet.Cells[2, 3] = Internet;
             sheet.Cells[3, 3] = Car_Insurance;
             sheet.Cells[4, 3] = Housing;
@@ -79,9 +89,20 @@ namespace HerBudget
             sheet.Cells[9, 3] = Dental;
             sheet.Cells[10, 3] = Healthcare;
             sheet.Cells[11, 3] = Savings;
+            sheet.Cells[12, 3] = "=SUM(C2:C11)";
+
+            //EXPENSES
+            sheet.Cells[15, 3] = Car_Gas;
+            sheet.Cells[16, 3] = Groceries;
+            sheet.Cells[17, 3] = Restaurant;
+            sheet.Cells[18, 3] = Necessary;
+            sheet.Cells[19, 3] = Unnecessary;
+            sheet.Cells[20, 3] = "=SUM(C15:C19)";
+
+            //Calculations
+            sheet.Cells[22, 3] = "=SUM(C20,C12)";
             sheet.Cells[24, 3] = Income;
-            
-            return NonBills;
+            sheet.Cells[26, 3] = "=C24-C22";
         }
 
         private Expense AskUser(Expense exp)
@@ -89,20 +110,68 @@ namespace HerBudget
             string? ResponseCheck;
             while (true)
             {
-                Console.WriteLine("Was this the correct selection?");
+                string selection = DisplayTransaction(exp);
+                Console.WriteLine($"You selected {selection}.\nIs this correct?");
                 ResponseCheck = Console.ReadLine();
                 if (ResponseCheck!.ToLower() == "n" || ResponseCheck!.ToLower() == "no")
                 {
-                    break;
+                    continue;
                 }
                 else
                 {
-                    Console.WriteLine("Checking again.");
+                    switch(selection)
+                    {
+                        case "Gas": exp.SubCategory = SubCategoryType.GAS_CAR; break;
+                        case "Groceries": exp.SubCategory = SubCategoryType.GROCERIES; break;
+                        case "Restaurant": exp.SubCategory = SubCategoryType.RESTAURANT; break;
+                        case "Misc(Necessary)": exp.SubCategory = SubCategoryType.MISC_NECESSARY; break;
+                        case "Misc(Unnecessary)": exp.SubCategory= SubCategoryType.MISC_UNNECESSARY; break;
+                    }
+                    break;
                 }
             }
             return exp;
         }
 
+        private void DisplayInstructions()
+        {
+            Console.WriteLine("All bill transactions are sorted. Please sort expense transactions.\n" +
+                                "Select number corresponding to category.\n" +
+                                "1. Gas\n2. Groceries\n3. Restaurant\n4. Misc(Necessary)\n5. Misc(Unnecessary)");
+        }
+
+        private string DisplayTransaction(Expense exp)
+        {
+            Console.WriteLine("\n\n\n" +
+                "Transaction\n===========================================================================================================\n" +
+                $"Date: {exp.Date.ToShortDateString()}   |   Detail: {exp.Detail}   |   Amount: ${exp.Amount}\n" +
+                "===========================================================================================================\n" +
+                "1. Gas, 2. Groceries, 3. Restaurant, 4. Misc(Necessary), or 5. Misc(Unnecessary)?");
+            string? catSelection;
+            int catSelectionNum;
+            while (true)
+            {
+                catSelection = Console.ReadLine();
+                if (int.TryParse(catSelection, out catSelectionNum) && catSelectionNum >= 1 && catSelectionNum <= 5)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Selection must be a number between 1 and 5. Please try again:");
+                    continue;
+                }
+            }
+            switch(catSelectionNum)
+            {
+                case 1: catSelection = "Gas"; break;
+                case 2: catSelection = "Groceries"; break;
+                case 3: catSelection = "Restaurant"; break;
+                case 4: catSelection = "Misc(Necessary)"; break;
+                case 5: catSelection = "Misc(Unnecessary)"; break;
+            }
+            return catSelection;
+        }
         /// <summary>
         /// Default headers created
         /// [Row, Column]
