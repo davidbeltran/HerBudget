@@ -99,7 +99,7 @@ namespace HerBudget
             sheet.Cells[19, 3] = Unnecessary;
             sheet.Cells[20, 3] = "=SUM(C15:C19)";
 
-            //Calculations
+            //CALCULATIONS
             sheet.Cells[22, 3] = "=SUM(C20,C12)";
             sheet.Cells[24, 3] = Income;
             sheet.Cells[26, 3] = "=C24-C22";
