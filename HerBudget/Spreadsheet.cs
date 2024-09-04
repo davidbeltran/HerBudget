@@ -33,17 +33,20 @@ namespace HerBudget
             excel.Visible = false;
 
             Excel.Workbook workbook = excel.Workbooks.Add();
-            Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
-            //Excel._Worksheet worksheet2 = (Excel.Worksheet)excel.Worksheets.Add();
-            worksheet.Name = "prueba";
-            //worksheet2.Name = "test";
-            MakeHeaders(worksheet);
-            AddBills(worksheet);
+            //Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
+            Excel._Worksheet worksheet2 = (Excel.Worksheet)excel.Worksheets.Add();
+            //worksheet.Name = "prueba";
+            worksheet2.Name = "test";
+            MakeHeaders(worksheet2);
+            AddBills(worksheet2);
             workbook.SaveAs(fullPath);
             //workbook.Save();
             workbook.Close();
         }
         // https://leetcode.com/problemset/
+        // https://reference.aspose.com/tutorials/cells/net/excel-worksheet-csharp-tutorials/add-excel-worksheet-to-existing-workbook-csharp-tutorial/
+        // https://learn.microsoft.com/en-us/visualstudio/vsto/how-to-programmatically-add-new-worksheets-to-workbooks?view=vs-2022&tabs=csharp
+        // https://www.google.com/search?q=c%23+add+excel+worksheet&oq=c%23+appending+excel&gs_lcrp=EgZjaHJvbWUqCAgCEAAYFhgeMgYIABBFGDkyCAgBEAAYFhgeMggIAhAAGBYYHjIICAMQABgWGB4yCAgEEAAYFhgeMggIBRAAGBYYHjIICAYQABgWGB4yBggHEEUYOtIBCDk4MjZqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8
         private void AddBills(Excel._Worksheet sheet)
         {
             double Internet = 0, Car_Insurance = 0, Housing = 0, Energy = 0, Gas = 0, Income = 0,
