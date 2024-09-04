@@ -33,15 +33,14 @@ namespace HerBudget
             excel.Visible = false;
 
             Excel.Workbook workbook = excel.Workbooks.Add();
-            excel.Workbooks.Open(fullPath);
             Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
-            Excel._Worksheet worksheet2 = (Excel.Worksheet)excel.ActiveSheet;
+            //Excel._Worksheet worksheet2 = (Excel.Worksheet)excel.Worksheets.Add();
             worksheet.Name = "prueba";
-            worksheet2.Name = "test";
+            //worksheet2.Name = "test";
             MakeHeaders(worksheet);
             AddBills(worksheet);
-            //workbook.SaveAs(fullPath);
-            workbook.Save();
+            workbook.SaveAs(fullPath);
+            //workbook.Save();
             workbook.Close();
         }
         // https://leetcode.com/problemset/
