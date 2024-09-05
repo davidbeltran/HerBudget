@@ -32,16 +32,30 @@ namespace HerBudget
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
-            Excel.Workbook workbook = excel.Workbooks.Add();
-            //Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
-            Excel._Worksheet worksheet2 = (Excel.Worksheet)excel.Worksheets.Add();
-            //worksheet.Name = "prueba";
-            worksheet2.Name = "test";
-            MakeHeaders(worksheet2);
-            AddBills(worksheet2);
-            workbook.SaveAs(fullPath);
-            //workbook.Save();
-            workbook.Close();
+            if (!File.Exists(fullPath))
+            {
+                Excel.Workbook workbook = excel.Workbooks.Add();
+                Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
+                worksheet.Name = "test";
+                MakeHeaders(worksheet);
+                AddBills(worksheet);
+                workbook.SaveAs(fullPath);
+                workbook.Close();
+            }
+            else
+            {
+                Excel.Workbook workbook = excel.Workbooks.Open(fullPath);
+                Excel.Sheets worksheets = workbook.Sheets;
+
+                Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
+                    System.Type.Missing, System.Type.Missing, System.Type.Missing);
+                worksheet.Name = "prueba";
+
+                MakeHeaders(worksheet);
+                AddBills(worksheet);
+                workbook.Save();
+                workbook.Close();
+            }
         }
         // https://leetcode.com/problemset/
         // https://reference.aspose.com/tutorials/cells/net/excel-worksheet-csharp-tutorials/add-excel-worksheet-to-existing-workbook-csharp-tutorial/
