@@ -57,6 +57,7 @@ namespace HerBudget
                 workbook.Close();
             }
         }
+
         private void AddBills(Excel._Worksheet sheet)
         {
             double Internet = 0, Car_Insurance = 0, Housing = 0, Energy = 0, Gas = 0, Income = 0,
