@@ -39,7 +39,7 @@ namespace HerBudget
             //Console.WriteLine("Enter name:");
             //string? aqui = Console.ReadLine();
             //Console.WriteLine($"hola, {aqui}");
-        }
+        }//
 
         private PdfWorker CreateWorker()
         {
