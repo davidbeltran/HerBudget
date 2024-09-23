@@ -36,7 +36,8 @@ namespace HerBudget
             {
                 Excel.Workbook workbook = excel.Workbooks.Add();
                 Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
-                worksheet.Name = "test";
+                Expense exp = (Expense)this.Expenses[0]!;
+                worksheet.Name = exp.Month;
                 MakeHeaders(worksheet);
                 AddBills(worksheet);
                 workbook.SaveAs(fullPath);

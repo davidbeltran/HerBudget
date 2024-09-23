@@ -2,6 +2,7 @@
  * Author: David Beltran
  */
 
+using System.Collections;
 using System.Text.RegularExpressions;
 
 namespace HerBudget
@@ -34,8 +35,13 @@ namespace HerBudget
             //    db.CreateTable(worker.CreateExpenseList());
             //    db.CloseDatabase();
             //}
-            Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
-            ss.AddToExcel();
+            //Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
+            //ss.AddToExcel();
+            ArrayList lista = worker.CreateExpenseList();
+            foreach (Expense exp  in lista)
+            {
+                Console.WriteLine($"{exp.Year}");            
+            }
             //Console.WriteLine("Enter name:");
             //string? aqui = Console.ReadLine();
             //Console.WriteLine($"hola, {aqui}");

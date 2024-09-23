@@ -10,6 +10,9 @@ namespace HerBudget
         public double Amount { get; set; }
         public CategoryType? Category { get; set; }
         public SubCategoryType? SubCategory { get; set; }
+        public string Month { get; set; }
+        public string Year { get; set; }
+
 
         public Expense(DateTime date, string detail, double Amount)
         {
@@ -17,6 +20,8 @@ namespace HerBudget
             this.Detail = detail;
             this.Amount = Amount;
             Categorize();
+            this.Month = date.ToString("MMM");
+            this.Year = date.Year.ToString();
         }
         private void Categorize()
         {
