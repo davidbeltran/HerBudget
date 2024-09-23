@@ -35,13 +35,8 @@ namespace HerBudget
             //    db.CreateTable(worker.CreateExpenseList());
             //    db.CloseDatabase();
             //}
-            //Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
-            //ss.AddToExcel();
-            ArrayList lista = worker.CreateExpenseList();
-            foreach (Expense exp  in lista)
-            {
-                Console.WriteLine($"{exp.Year}");            
-            }
+            Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
+            ss.AddToExcel();
             //Console.WriteLine("Enter name:");
             //string? aqui = Console.ReadLine();
             //Console.WriteLine($"hola, {aqui}");

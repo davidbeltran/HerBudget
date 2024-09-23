@@ -28,7 +28,8 @@ namespace HerBudget
 
         public void AddToExcel()
         {
-            string fullPath = MakeDirectory() + @"\Finances.xlsx";
+            Expense exp = (Expense)this.Expenses[0]!;
+            string fullPath = MakeDirectory() + @"\Finances" + exp.Year + ".xlsx";
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
@@ -36,7 +37,6 @@ namespace HerBudget
             {
                 Excel.Workbook workbook = excel.Workbooks.Add();
                 Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
-                Expense exp = (Expense)this.Expenses[0]!;
                 worksheet.Name = exp.Month;
                 MakeHeaders(worksheet);
                 AddBills(worksheet);
@@ -57,7 +57,7 @@ namespace HerBudget
                 workbook.Save();
                 workbook.Close();
             }
-        }
+        }//
 
         private void AddBills(Excel._Worksheet sheet)
         {
