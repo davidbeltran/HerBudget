@@ -48,7 +48,8 @@ namespace HerBudget
             {
                 Excel.Workbook workbook = excel.Workbooks.Open(fullPath);
                 Excel.Sheets worksheets = workbook.Sheets;
-
+                //workbook.Worksheets[firstExp.Month];
+                // https://reference.aspose.com/tutorials/cells/net/excel-worksheet-csharp-tutorials/get-excel-worksheet-by-name-csharp-tutorial/
                 Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
                 worksheet.Name = "prueba";
