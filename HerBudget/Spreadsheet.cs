@@ -28,8 +28,9 @@ namespace HerBudget
 
         public void AddToExcel()
         {
-            Expense exp = (Expense)this.Expenses[0]!;
-            string fullPath = MakeDirectory() + @"\Finances" + exp.Year + ".xlsx";
+            Expense firstExp = (Expense)this.Expenses[0]!;
+            Expense lastExp = (Expense)this.Expenses[^1]!;
+            string fullPath = MakeDirectory() + @"\Finances" + firstExp.Year + ".xlsx";
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
@@ -37,7 +38,7 @@ namespace HerBudget
             {
                 Excel.Workbook workbook = excel.Workbooks.Add();
                 Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
-                worksheet.Name = exp.Month;
+                worksheet.Name = firstExp.Month;
                 MakeHeaders(worksheet);
                 AddBills(worksheet);
                 workbook.SaveAs(fullPath);
