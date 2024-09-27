@@ -48,8 +48,8 @@ namespace HerBudget
             {
                 Excel.Workbook workbook = excel.Workbooks.Open(fullPath);
                 Excel.Sheets worksheets = workbook.Sheets;
-
-                //will need to create function to find existing worksheets
+                //test if FindSheet() method works, then continue building api
+                FindSheet(worksheets, firstExp);
                 Excel._Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[lastExp.Month];
                 Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
@@ -60,6 +60,18 @@ namespace HerBudget
                 workbook.Save();
                 workbook.Close();
             }
+        }
+
+        private bool FindSheet(Excel.Sheets sheets, Expense exp)
+        {
+            foreach (Excel.Worksheet sheet in sheets)
+            {
+                if (sheet.Name == exp.Month)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void AddBills(Excel._Worksheet sheet)
