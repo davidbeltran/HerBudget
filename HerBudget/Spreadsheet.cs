@@ -48,10 +48,12 @@ namespace HerBudget
             {
                 Excel.Workbook workbook = excel.Workbooks.Open(fullPath);
                 Excel.Sheets worksheets = workbook.Sheets;
+
+                //will need to create function to find existing worksheets
                 Excel._Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[lastExp.Month];
-                //Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
-                //    System.Type.Missing, System.Type.Missing, System.Type.Missing);
-                worksheet.Name = "prueba";
+                Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
+                    System.Type.Missing, System.Type.Missing, System.Type.Missing);
+                worksheet.Name = lastExp.Month;
 
                 MakeHeaders(worksheet);
                 AddBills(worksheet);
