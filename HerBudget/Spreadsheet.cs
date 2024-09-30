@@ -48,8 +48,14 @@ namespace HerBudget
             {
                 Excel.Workbook workbook = excel.Workbooks.Open(fullPath);
                 Excel.Sheets worksheets = workbook.Sheets;
-                //test if FindSheet() method works, then continue building api
-                FindSheet(worksheets, firstExp);
+                if (!FindSheet(worksheets, firstExp))
+                {
+                    Console.WriteLine("it worked!");
+                }
+                else
+                {
+                    Console.WriteLine("did not work");
+                }
                 //Excel._Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[lastExp.Month];
                 Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
