@@ -50,7 +50,7 @@ namespace HerBudget
                 Excel.Sheets worksheets = workbook.Sheets;
                 //test if FindSheet() method works, then continue building api
                 FindSheet(worksheets, firstExp);
-                Excel._Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[lastExp.Month];
+                //Excel._Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[lastExp.Month];
                 Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
                 worksheet.Name = lastExp.Month;
