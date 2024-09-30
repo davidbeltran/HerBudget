@@ -64,13 +64,24 @@ namespace HerBudget
 
         private void AddBothMonths(Excel.Sheets sheets, Expense firstExp, Expense lastExp)
         {
-            if (!FindSheet(sheets, firstExp))
+            if (FindSheet(sheets, firstExp))
             {
+                //write in existing month page. AddBills() needs to be altered
                 Console.WriteLine($"it worked! there are {sheets.Count} sheets");
             }
             else
             {
-                Console.WriteLine("did not work");
+                //create new sheet using sheets.Count tool
+            }
+
+            if (FindSheet(sheets, lastExp))
+            {
+                //write in existing month page. AddBills() needs to be altered
+                Console.WriteLine($"it worked! there are {sheets.Count} sheets");
+            }
+            else
+            {
+                //create new sheet using sheets.Count tool
             }
         }
         private bool FindSheet(Excel.Sheets sheets, Expense exp)
