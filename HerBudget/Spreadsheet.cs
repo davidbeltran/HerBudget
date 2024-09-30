@@ -48,14 +48,8 @@ namespace HerBudget
             {
                 Excel.Workbook workbook = excel.Workbooks.Open(fullPath);
                 Excel.Sheets worksheets = workbook.Sheets;
-                if (!FindSheet(worksheets, firstExp))
-                {
-                    Console.WriteLine("it worked!");
-                }
-                else
-                {
-                    Console.WriteLine("did not work");
-                }
+
+                AddBothMonths(worksheets, firstExp, lastExp);
                 //Excel._Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[lastExp.Month];
                 Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
@@ -68,6 +62,17 @@ namespace HerBudget
             }
         }
 
+        private void AddBothMonths(Excel.Sheets sheets, Expense firstExp, Expense lastExp)
+        {
+            if (!FindSheet(sheets, firstExp))
+            {
+                Console.WriteLine($"it worked! there are {sheets.Count} sheets");
+            }
+            else
+            {
+                Console.WriteLine("did not work");
+            }
+        }
         private bool FindSheet(Excel.Sheets sheets, Expense exp)
         {
             foreach (Excel.Worksheet sheet in sheets)
