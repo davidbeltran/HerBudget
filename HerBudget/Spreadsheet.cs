@@ -49,16 +49,15 @@ namespace HerBudget
                 Excel.Workbook workbook = excel.Workbooks.Open(fullPath);
                 Excel.Sheets worksheets = workbook.Sheets;
 
-                //AddBothMonths(worksheets, firstExp, lastExp);
+                AddBothMonths(worksheets, firstExp, lastExp);
                 // DO NOT DELETE LINES UNTIL AddBothMonths() METHOD IS TESTED!!!!!!!!!!!!!!!
-                Excel._Worksheet worksheet = (Excel.Worksheet)worksheets[lastExp.Month];
-                //Excel._Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[lastExp.Month];
+                //Excel._Worksheet worksheet = (Excel.Worksheet)worksheets[lastExp.Month];
                 //Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
                 //    System.Type.Missing, System.Type.Missing, System.Type.Missing);
                 //worksheet.Name = lastExp.Month;
 
-                MakeHeaders(worksheet);
-                AddBills(worksheet);
+                //MakeHeaders(worksheet);
+                //AddBills(worksheet);
                 workbook.Save();
                 workbook.Close();
             }
