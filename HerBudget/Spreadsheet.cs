@@ -66,19 +66,20 @@ namespace HerBudget
         {
             if (FindSheet(sheets, firstExp))
             {
-                Excel._Worksheet worksheet = (Excel.Worksheet)sheets[lastExp.Month];
+                Excel._Worksheet worksheet = (Excel.Worksheet)sheets[firstExp.Month];
                 //write in existing month page. AddBills() needs to be altered
-                Console.WriteLine($"it worked! there are {sheets.Count} sheets");
             }
             else
             {
+                Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count + 1],
+                    System.Type.Missing, System.Type.Missing, System.Type.Missing);
+                worksheet.Name = lastExp.Month;
                 //create new sheet using sheets.Count tool
             }
 
             if (FindSheet(sheets, lastExp))
             {
                 //write in existing month page. AddBills() needs to be altered
-                Console.WriteLine($"it worked! there are {sheets.Count} sheets");
             }
             else
             {
