@@ -70,7 +70,7 @@ namespace HerBudget
                 Excel._Worksheet worksheet = (Excel.Worksheet)sheets[firstExp.Month];
                 MakeHeaders(worksheet);
                 AddBills(worksheet);
-                //write in existing month page. AddBills() needs to be altered
+                //AddBills() needs to be altered
             }
             else
             {
@@ -79,16 +79,22 @@ namespace HerBudget
                 worksheet.Name = firstExp.Month;
                 MakeHeaders(worksheet);
                 AddBills(worksheet);
-                //create new sheet using sheets.Count tool
             }
 
-            if (FindSheet(sheets, lastExp) && !(firstExp.Month == lastExp.Month))
+            if (FindSheet(sheets, lastExp) && (firstExp.Month != lastExp.Month))
             {
-                //write in existing month page. AddBills() needs to be altered
+                Excel._Worksheet worksheet = (Excel.Worksheet)sheets[lastExp.Month];
+                MakeHeaders(worksheet);
+                AddBills(worksheet);
+                // AddBills() needs to be altered
             }
             else
             {
-                //create new sheet using sheets.Count tool
+                Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count + 1],
+                    System.Type.Missing, System.Type.Missing, System.Type.Missing);
+                worksheet.Name = lastExp.Month;
+                MakeHeaders(worksheet);
+                AddBills(worksheet);
             }
         }
         private bool FindSheet(Excel.Sheets sheets, Expense exp)
