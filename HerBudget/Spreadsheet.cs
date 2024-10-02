@@ -50,6 +50,7 @@ namespace HerBudget
                 Excel.Sheets worksheets = workbook.Sheets;
 
                 AddBothMonths(worksheets, firstExp, lastExp);
+                // DO NOT DELETE LINES UNTIL AddBothMonths() METHOD IS TESTED!!!!!!!!!!!!!!!
                 //Excel._Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[lastExp.Month];
                 //Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
                 //    System.Type.Missing, System.Type.Missing, System.Type.Missing);
@@ -76,10 +77,12 @@ namespace HerBudget
                 Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count + 1],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
                 worksheet.Name = firstExp.Month;
+                MakeHeaders(worksheet);
+                AddBills(worksheet);
                 //create new sheet using sheets.Count tool
             }
 
-            if (FindSheet(sheets, lastExp))
+            if (FindSheet(sheets, lastExp) && !(firstExp.Month == lastExp.Month))
             {
                 //write in existing month page. AddBills() needs to be altered
             }
