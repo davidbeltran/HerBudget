@@ -51,12 +51,12 @@ namespace HerBudget
 
                 AddBothMonths(worksheets, firstExp, lastExp);
                 //Excel._Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[lastExp.Month];
-                Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
-                    System.Type.Missing, System.Type.Missing, System.Type.Missing);
-                worksheet.Name = lastExp.Month;
+                //Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
+                //    System.Type.Missing, System.Type.Missing, System.Type.Missing);
+                //worksheet.Name = lastExp.Month;
 
-                MakeHeaders(worksheet);
-                AddBills(worksheet);
+                //MakeHeaders(worksheet);
+                //AddBills(worksheet);
                 workbook.Save();
                 workbook.Close();
             }
@@ -67,13 +67,15 @@ namespace HerBudget
             if (FindSheet(sheets, firstExp))
             {
                 Excel._Worksheet worksheet = (Excel.Worksheet)sheets[firstExp.Month];
+                MakeHeaders(worksheet);
+                AddBills(worksheet);
                 //write in existing month page. AddBills() needs to be altered
             }
             else
             {
                 Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count + 1],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
-                worksheet.Name = lastExp.Month;
+                worksheet.Name = firstExp.Month;
                 //create new sheet using sheets.Count tool
             }
 
