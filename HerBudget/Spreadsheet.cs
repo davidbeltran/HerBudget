@@ -66,6 +66,7 @@ namespace HerBudget
         {
             if (FindSheet(sheets, firstExp))
             {
+                Excel._Worksheet worksheet = (Excel.Worksheet)sheets[lastExp.Month];
                 //write in existing month page. AddBills() needs to be altered
                 Console.WriteLine($"it worked! there are {sheets.Count} sheets");
             }
