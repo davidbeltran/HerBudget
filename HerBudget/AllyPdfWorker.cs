@@ -58,6 +58,8 @@ namespace HerBudget
                 }
                 Expenses.Add(exp);
             }
+            IComparer comparer = new DateComparer();
+            Expenses.Sort(comparer);
             return Expenses;
         }
     }

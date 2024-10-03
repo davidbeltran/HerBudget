@@ -35,9 +35,8 @@ namespace HerBudget
             //    db.CreateTable(worker.CreateExpenseList());
             //    db.CloseDatabase();
             //}
-            //Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
-            //ss.AddToExcel();
-            worker.CreateExpenseList();
+            Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
+            ss.AddToExcel();
         }
 
         private PdfWorker CreateWorker()

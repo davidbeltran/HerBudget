@@ -34,6 +34,7 @@ namespace HerBudget
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
+            //need to 
             if (!File.Exists(fullPath))
             {
                 Excel.Workbook workbook = excel.Workbooks.Add();
@@ -50,14 +51,6 @@ namespace HerBudget
                 Excel.Sheets worksheets = workbook.Sheets;
 
                 AddBothMonths(worksheets, firstExp, lastExp);
-                // DO NOT DELETE LINES UNTIL AddBothMonths() METHOD IS TESTED!!!!!!!!!!!!!!!
-                //Excel._Worksheet worksheet = (Excel.Worksheet)worksheets[lastExp.Month];
-                //Excel._Worksheet worksheet = (Excel.Worksheet)worksheets.Add(worksheets[1],
-                //    System.Type.Missing, System.Type.Missing, System.Type.Missing);
-                //worksheet.Name = lastExp.Month;
-
-                //MakeHeaders(worksheet);
-                //AddBills(worksheet);
                 workbook.Save();
                 workbook.Close();
             }
@@ -65,37 +58,6 @@ namespace HerBudget
 
         private void AddBothMonths(Excel.Sheets sheets, Expense firstExp, Expense lastExp)
         {
-            //if (FindSheet(sheets, firstExp))
-            //{
-            //    Excel._Worksheet worksheet = (Excel.Worksheet)sheets[firstExp.Month];
-            //    MakeHeaders(worksheet);////
-            //    AddBills(worksheet);
-            //    //AddBills() needs to be altered
-            //}
-            //else
-            //{
-            //    Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
-            //        System.Type.Missing, System.Type.Missing, System.Type.Missing);
-            //    worksheet.Name = firstExp.Month;
-            //    MakeHeaders(worksheet);////
-            //    AddBills(worksheet);
-            //}
-
-            //if (FindSheet(sheets, lastExp) && (firstExp.Month != lastExp.Month))
-            //{
-            //    Excel._Worksheet worksheet = (Excel.Worksheet)sheets[lastExp.Month];
-            //    MakeHeaders(worksheet);////
-            //    AddBills(worksheet);
-            //    // AddBills() needs to be altered
-            //}
-            //else
-            //{
-            //    Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
-            //        System.Type.Missing, System.Type.Missing, System.Type.Missing);
-            //    worksheet.Name = lastExp.Month;
-            //    MakeHeaders(worksheet);//
-            //    AddBills(worksheet);
-            //}
             AddMonth(sheets, firstExp);
             if (firstExp.Month != lastExp.Month)
             {
