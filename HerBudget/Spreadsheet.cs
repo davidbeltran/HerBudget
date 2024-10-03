@@ -30,7 +30,8 @@ namespace HerBudget
         {
             Expense firstExp = (Expense)this.Expenses[0]!;
             Expense lastExp = (Expense)this.Expenses[^1]!;
-            string fullPath = MakeDirectory() + @"\Finances" + firstExp.Year + ".xlsx";
+            //string fullPath = MakeDirectory() + @"\Finances" + firstExp.Year + ".xlsx";
+            string fullPath = MakeDirectory() + @"\Finances" + 2024 + ".xlsx";
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
@@ -65,37 +66,59 @@ namespace HerBudget
 
         private void AddBothMonths(Excel.Sheets sheets, Expense firstExp, Expense lastExp)
         {
-            if (FindSheet(sheets, firstExp))
-            {
-                Excel._Worksheet worksheet = (Excel.Worksheet)sheets[firstExp.Month];
-                MakeHeaders(worksheet);////
-                AddBills(worksheet);
-                //AddBills() needs to be altered
-            }
-            else
-            {
-                Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
-                    System.Type.Missing, System.Type.Missing, System.Type.Missing);
-                worksheet.Name = firstExp.Month;
-                MakeHeaders(worksheet);////
-                AddBills(worksheet);
-            }
+            //if (FindSheet(sheets, firstExp))
+            //{
+            //    Excel._Worksheet worksheet = (Excel.Worksheet)sheets[firstExp.Month];
+            //    MakeHeaders(worksheet);////
+            //    AddBills(worksheet);
+            //    //AddBills() needs to be altered
+            //}
+            //else
+            //{
+            //    Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
+            //        System.Type.Missing, System.Type.Missing, System.Type.Missing);
+            //    worksheet.Name = firstExp.Month;
+            //    MakeHeaders(worksheet);////
+            //    AddBills(worksheet);
+            //}
 
-            if (FindSheet(sheets, lastExp) && (firstExp.Month != lastExp.Month))
+            //if (FindSheet(sheets, lastExp) && (firstExp.Month != lastExp.Month))
+            //{
+            //    Excel._Worksheet worksheet = (Excel.Worksheet)sheets[lastExp.Month];
+            //    MakeHeaders(worksheet);////
+            //    AddBills(worksheet);
+            //    // AddBills() needs to be altered
+            //}
+            //else
+            //{
+            //    Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
+            //        System.Type.Missing, System.Type.Missing, System.Type.Missing);
+            //    worksheet.Name = lastExp.Month;
+            //    MakeHeaders(worksheet);//
+            //    AddBills(worksheet);
+            //}
+            AddMonth(sheets, firstExp);
+            if (firstExp.Month != lastExp.Month)
             {
-                Excel._Worksheet worksheet = (Excel.Worksheet)sheets[lastExp.Month];
-                MakeHeaders(worksheet);////
-                AddBills(worksheet);
-                // AddBills() needs to be altered
+                AddMonth(sheets, lastExp);
+            }
+        }
+
+        private void AddMonth(Excel.Sheets sheets, Expense exp)
+        {
+            Excel._Worksheet worksheet;
+            if (FindSheet(sheets, exp))
+            {
+                worksheet = (Excel.Worksheet)sheets[exp.Month];
             }
             else
             {
-                Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
+                worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
-                worksheet.Name = lastExp.Month;
-                MakeHeaders(worksheet);//
-                AddBills(worksheet);
+                worksheet.Name = exp.Month;
             }
+            MakeHeaders(worksheet);
+            AddBills(worksheet);
         }
         private bool FindSheet(Excel.Sheets sheets, Expense exp)
         {
