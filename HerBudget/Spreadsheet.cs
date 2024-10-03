@@ -68,7 +68,7 @@ namespace HerBudget
             if (FindSheet(sheets, firstExp))
             {
                 Excel._Worksheet worksheet = (Excel.Worksheet)sheets[firstExp.Month];
-                MakeHeaders(worksheet);
+                MakeHeaders(worksheet);////
                 AddBills(worksheet);
                 //AddBills() needs to be altered
             }
@@ -77,14 +77,14 @@ namespace HerBudget
                 Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
                 worksheet.Name = firstExp.Month;
-                MakeHeaders(worksheet);
+                MakeHeaders(worksheet);////
                 AddBills(worksheet);
             }
 
             if (FindSheet(sheets, lastExp) && (firstExp.Month != lastExp.Month))
             {
                 Excel._Worksheet worksheet = (Excel.Worksheet)sheets[lastExp.Month];
-                MakeHeaders(worksheet);
+                MakeHeaders(worksheet);////
                 AddBills(worksheet);
                 // AddBills() needs to be altered
             }
@@ -93,7 +93,7 @@ namespace HerBudget
                 Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
                 worksheet.Name = lastExp.Month;
-                MakeHeaders(worksheet);
+                MakeHeaders(worksheet);//
                 AddBills(worksheet);
             }
         }
