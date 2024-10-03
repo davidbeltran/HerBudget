@@ -74,7 +74,7 @@ namespace HerBudget
             }
             else
             {
-                Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count + 1],
+                Excel._Worksheet worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
                 worksheet.Name = firstExp.Month;
                 MakeHeaders(worksheet);
