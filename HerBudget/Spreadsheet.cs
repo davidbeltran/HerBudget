@@ -34,6 +34,7 @@ namespace HerBudget
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
+            //TODO
             //-need to allow this part to write lastexp month if it is not the same as firstexp month
             //-look at combining the MakeHeaders() method into the AddBills() method
             //-still need to adjust AddBills() method to separte adding amounts to their appropriate months
