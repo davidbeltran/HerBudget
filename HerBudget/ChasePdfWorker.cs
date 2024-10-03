@@ -35,6 +35,12 @@ namespace HerBudget
                 }
                 ExpenseList.Add(exp);
             }
+            IComparer comparer = (IComparer)new DateComparer();
+            ExpenseList.Sort(comparer);
+            foreach (Expense exp in ExpenseList)
+            {
+                Console.WriteLine(exp.Month);
+            }
             return ExpenseList;
         }
     }

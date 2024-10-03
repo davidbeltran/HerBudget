@@ -30,8 +30,7 @@ namespace HerBudget
         {
             Expense firstExp = (Expense)this.Expenses[0]!;
             Expense lastExp = (Expense)this.Expenses[^1]!;
-            //string fullPath = MakeDirectory() + @"\Finances" + firstExp.Year + ".xlsx";
-            string fullPath = MakeDirectory() + @"\Finances" + 2024 + ".xlsx";
+            string fullPath = MakeDirectory() + @"\Finances" + firstExp.Year + ".xlsx";
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
