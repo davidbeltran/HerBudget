@@ -41,6 +41,7 @@ namespace HerBudget
             //      Excel.Workbook workbook = excelApp.Workbooks.Open(@"C:\path\to\your\excel\file.xlsx");
             //      workbook.Close(false);
             //      excelApp.Quit();
+            //-look at askUser() method. the yes response is not working properly if you enter anything other than y or n
             if (!File.Exists(fullPath))
             {
                 Excel.Workbook workbook = excel.Workbooks.Add();
