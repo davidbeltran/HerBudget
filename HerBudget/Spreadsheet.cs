@@ -1,10 +1,4 @@
-﻿//using Google.Protobuf.WellKnownTypes;
-//using Microsoft.Office.Interop.Excel;
-//using Microsoft.Office.Interop.Excel;
-//using Mysqlx.Expr;
-//using Org.BouncyCastle.Utilities;
-using System.Collections;
-//using System.Text.RegularExpressions;
+﻿using System.Collections;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HerBudget
@@ -38,7 +32,6 @@ namespace HerBudget
             excel.Visible = false;
 
             //TODO
-            //-look at combining the MakeHeaders() method into the AddBills() method
             //-still need to adjust AddBills() method to separte adding amounts to their appropriate months
             //-ai came up with this solution below: 
             //      Excel.Range cell = worksheet.Cells[1, 1]; // Row 1, Column 1 (A1)
@@ -53,7 +46,6 @@ namespace HerBudget
                 Excel.Workbook workbook = excel.Workbooks.Add();
                 Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
                 worksheet.Name = firstExp.Month;
-                //MakeHeaders(worksheet);
                 AddBills(worksheet);
 
                 if (firstExp.Month != lastExp.Month)
@@ -61,7 +53,6 @@ namespace HerBudget
                     worksheet = (Excel.Worksheet)workbook.Sheets.Add(workbook.Sheets[workbook.Sheets.Count],
                         System.Type.Missing, System.Type.Missing, System.Type.Missing);
                     worksheet.Name = lastExp.Month;
-                    //MakeHeaders(worksheet);
                     AddBills(worksheet);
                 }
                 workbook.SaveAs(fullPath);
@@ -102,7 +93,6 @@ namespace HerBudget
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
                 worksheet.Name = exp.Month;
             }
-            //MakeHeaders(worksheet);
             AddBills(worksheet);
         }
         private bool FindSheet(Excel.Sheets sheets, Expense exp)
@@ -156,12 +146,8 @@ namespace HerBudget
                 }
             }
 
-            Excel.Range cell = (Excel.Range)sheet.Cells[1, 1];
-            string? cellValue = cell.Value.ToString();
-            if (cellValue != null)
-            {
-                MakeHeaders(sheet);
-            }
+            MakeHeaders(sheet);
+
             //BILLS
             sheet.Cells[2, 3] = Internet;
             sheet.Cells[3, 3] = Car_Insurance;
@@ -264,7 +250,7 @@ namespace HerBudget
         private static void MakeHeaders(Excel._Worksheet sheet)
         {
             //Bold Headers 
-            sheet.Cells[1, 1] = "TYPE";
+            sheet!.Cells[1, 1] = "TYPE";
             sheet.Cells[1, 2] = "BILLS";
             sheet.Cells[1, 3] = "AMOUNT";
             sheet.Cells[12, 2] = "Total";
@@ -307,4 +293,4 @@ namespace HerBudget
             sheet.Cells[19, 2] = "Misc. (Unnecessary)";
         }
     }
-}//
+}
