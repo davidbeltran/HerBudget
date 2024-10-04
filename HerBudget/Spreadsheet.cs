@@ -1,8 +1,8 @@
 ﻿//using Google.Protobuf.WellKnownTypes;
 //using Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Excel;
-using Mysqlx.Expr;
-using Org.BouncyCastle.Utilities;
+//using Microsoft.Office.Interop.Excel;
+//using Mysqlx.Expr;
+//using Org.BouncyCastle.Utilities;
 using System.Collections;
 //using System.Text.RegularExpressions;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -53,7 +53,7 @@ namespace HerBudget
                 Excel.Workbook workbook = excel.Workbooks.Add();
                 Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
                 worksheet.Name = firstExp.Month;
-                MakeHeaders(worksheet);
+                //MakeHeaders(worksheet);
                 AddBills(worksheet);
 
                 if (firstExp.Month != lastExp.Month)
@@ -61,7 +61,7 @@ namespace HerBudget
                     worksheet = (Excel.Worksheet)workbook.Sheets.Add(workbook.Sheets[workbook.Sheets.Count],
                         System.Type.Missing, System.Type.Missing, System.Type.Missing);
                     worksheet.Name = lastExp.Month;
-                    MakeHeaders(worksheet);
+                    //MakeHeaders(worksheet);
                     AddBills(worksheet);
                 }
                 workbook.SaveAs(fullPath);
@@ -154,6 +154,13 @@ namespace HerBudget
                         case SubCategoryType.MISC_UNNECESSARY: Unnecessary += exp.Amount; break;
                     }
                 }
+            }
+
+            Excel.Range cell = (Excel.Range)sheet.Cells[1, 1];
+            string? cellValue = cell.Value.ToString();
+            if (cellValue != null)
+            {
+                MakeHeaders(sheet);
             }
             //BILLS
             sheet.Cells[2, 3] = Internet;
