@@ -1,7 +1,10 @@
-﻿using Google.Protobuf.WellKnownTypes;
+﻿//using Google.Protobuf.WellKnownTypes;
+//using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
+using Mysqlx.Expr;
+using Org.BouncyCastle.Utilities;
 using System.Collections;
-using System.Text.RegularExpressions;
+//using System.Text.RegularExpressions;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HerBudget
@@ -53,6 +56,13 @@ namespace HerBudget
                 worksheet.Name = firstExp.Month;
                 MakeHeaders(worksheet);
                 AddBills(worksheet);
+
+                if (firstExp.Month != lastExp.Month)
+                {
+                    worksheet = (Excel.Worksheet)workbook.Sheets.Add(workbook.Sheets[workbook.Sheets.Count],
+                        System.Type.Missing, System.Type.Missing, System.Type.Missing);
+                    worksheet.Name = lastExp.Month;
+                }
                 workbook.SaveAs(fullPath);
                 workbook.Close(false);
                 excel.Quit();
@@ -91,7 +101,7 @@ namespace HerBudget
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
                 worksheet.Name = exp.Month;
             }
-            MakeHeaders(worksheet);
+            //MakeHeaders(worksheet);
             AddBills(worksheet);
         }
         private bool FindSheet(Excel.Sheets sheets, Expense exp)
