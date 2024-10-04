@@ -62,6 +62,8 @@ namespace HerBudget
                     worksheet = (Excel.Worksheet)workbook.Sheets.Add(workbook.Sheets[workbook.Sheets.Count],
                         System.Type.Missing, System.Type.Missing, System.Type.Missing);
                     worksheet.Name = lastExp.Month;
+                    MakeHeaders(worksheet);
+                    AddBills(worksheet);
                 }
                 workbook.SaveAs(fullPath);
                 workbook.Close(false);
