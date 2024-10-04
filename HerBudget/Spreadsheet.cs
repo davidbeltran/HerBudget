@@ -49,10 +49,12 @@ namespace HerBudget
             if (!File.Exists(fullPath))
             {
                 Excel.Workbook workbook = excel.Workbooks.Add();
-                Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
-                worksheet.Name = firstExp.Month;
-                MakeHeaders(worksheet);
-                AddBills(worksheet);
+                //Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
+                //worksheet.Name = firstExp.Month;
+                //MakeHeaders(worksheet);
+                //AddBills(worksheet);
+                Excel.Sheets worksheets = workbook.Sheets;
+                AddBothMonths(worksheets, firstExp, lastExp);
                 workbook.SaveAs(fullPath);
                 workbook.Close();
             }
