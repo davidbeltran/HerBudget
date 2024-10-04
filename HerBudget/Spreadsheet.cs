@@ -54,7 +54,8 @@ namespace HerBudget
                 MakeHeaders(worksheet);
                 AddBills(worksheet);
                 workbook.SaveAs(fullPath);
-                workbook.Close();
+                workbook.Close(false);
+                excel.Quit();
             }
             else
             {
@@ -63,7 +64,8 @@ namespace HerBudget
 
                 AddBothMonths(worksheets, firstExp, lastExp);
                 workbook.Save();
-                workbook.Close();
+                workbook.Close(false);
+                excel.Quit();
             }
         }
 
