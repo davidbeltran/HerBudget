@@ -108,6 +108,9 @@ namespace HerBudget
             return false;
         }
 
+        //-ai came up with this solution below: 
+        //      Excel.Range cell = worksheet.Cells[1, 1]; // Row 1, Column 1 (A1)
+        //      string cellValue = cell.Value.ToString();
         private void AddBills(Excel._Worksheet sheet)
         {
             double Internet = 0, Car_Insurance = 0, Housing = 0, Energy = 0, Gas = 0, Income = 0,
