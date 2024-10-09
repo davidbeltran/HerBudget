@@ -116,6 +116,7 @@ namespace HerBudget
             double Internet = 0, Car_Insurance = 0, Housing = 0, Energy = 0, Gas = 0, Income = 0,
                 Phones = 0, Entertainment = 0, Dental = 0, Healthcare = 0, Savings = 0, Car_Gas = 0,
                 Groceries = 0, Restaurant = 0, Necessary = 0, Unnecessary = 0;
+                        
             DisplayInstructions();
             foreach (Expense exp in  Expenses)
             {
@@ -159,7 +160,7 @@ namespace HerBudget
             sheet.Cells[5, 3] = Energy;
             sheet.Cells[6, 3] = Gas;
             sheet.Cells[7, 3] = Phones;
-            sheet.Cells[8, 3] = Entertainment;
+            sheet.Cells[8, 3] = Entertainment;//
             sheet.Cells[9, 3] = Dental;
             sheet.Cells[10, 3] = Healthcare;
             sheet.Cells[11, 3] = Savings;
@@ -170,7 +171,7 @@ namespace HerBudget
             sheet.Cells[16, 3] = Groceries;
             sheet.Cells[17, 3] = Restaurant;
             sheet.Cells[18, 3] = Necessary;
-            sheet.Cells[19, 3] = Unnecessary;
+            sheet.Cells[19, 3] = Unnecessary;//
             sheet.Cells[20, 3] = "=SUM(C15:C19)";
 
             //CALCULATIONS
