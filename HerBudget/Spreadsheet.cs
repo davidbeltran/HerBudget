@@ -90,10 +90,12 @@ namespace HerBudget
                 worksheet = (Excel.Worksheet)sheets[exp.Month];
                 Excel.Range cell1 = (Excel.Range)worksheet.Cells[8, 3];//
                 Excel.Range cell2 = (Excel.Range)worksheet.Cells[19, 3];//
+                Excel.Range cell3 = (Excel.Range)worksheet.Cells[2, 3];//
 
                 string cell1v = cell1.Value.ToString();
                 string cell2v = cell2.Value.ToString();
-                Console.WriteLine($"tv: {cell1v} | misc: {cell2v}");
+                string cell3v = cell3.Value.ToString();
+                Console.WriteLine($"tv: {cell1v} | misc: {cell2v} | internet: {cell3v}");
             }
             else
             {
