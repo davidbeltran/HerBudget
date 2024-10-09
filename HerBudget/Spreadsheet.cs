@@ -88,9 +88,9 @@ namespace HerBudget
             if (FindSheet(sheets, exp))
             {
                 worksheet = (Excel.Worksheet)sheets[exp.Month];
-                Excel.Range cell1 = (Excel.Range)worksheet.Cells[8, 3];//
-                Excel.Range cell2 = (Excel.Range)worksheet.Cells[19, 3];//
-                Excel.Range cell3 = (Excel.Range)worksheet.Cells[2, 3];//
+                Excel.Range cell1 = (Excel.Range)worksheet.Cells[8, 3];
+                Excel.Range cell2 = (Excel.Range)worksheet.Cells[19, 3];
+                Excel.Range cell3 = (Excel.Range)worksheet.Cells[2, 3];
 
                 double cell1v = Convert.ToDouble(cell1.Value.ToString());
                 double cell2v = Convert.ToDouble(cell2.Value.ToString());
@@ -117,9 +117,6 @@ namespace HerBudget
             return false;
         }
 
-        //-ai came up with this solution below: 
-        //      Excel.Range cell = worksheet.Cells[1, 1]; // Row 1, Column 1 (A1)
-        //      string cellValue = cell.Value.ToString();
         private void AddBills(Excel._Worksheet sheet)
         {
             double Internet = 0, Car_Insurance = 0, Housing = 0, Energy = 0, Gas = 0, Income = 0,
@@ -169,7 +166,7 @@ namespace HerBudget
             sheet.Cells[5, 3] = Energy;
             sheet.Cells[6, 3] = Gas;
             sheet.Cells[7, 3] = Phones;
-            sheet.Cells[8, 3] = Entertainment;//
+            sheet.Cells[8, 3] = Entertainment;
             sheet.Cells[9, 3] = Dental;
             sheet.Cells[10, 3] = Healthcare;
             sheet.Cells[11, 3] = Savings;
@@ -180,7 +177,7 @@ namespace HerBudget
             sheet.Cells[16, 3] = Groceries;
             sheet.Cells[17, 3] = Restaurant;
             sheet.Cells[18, 3] = Necessary;
-            sheet.Cells[19, 3] = Unnecessary;//
+            sheet.Cells[19, 3] = Unnecessary;
             sheet.Cells[20, 3] = "=SUM(C15:C19)";
 
             //CALCULATIONS
