@@ -87,6 +87,7 @@ namespace HerBudget
             Excel._Worksheet worksheet;
             if (FindSheet(sheets, exp))
             {
+                //This is tested and confirmed to work. add to AddBills() method
                 worksheet = (Excel.Worksheet)sheets[exp.Month];
                 Excel.Range cell1 = (Excel.Range)worksheet.Cells[8, 3];
                 Excel.Range cell2 = (Excel.Range)worksheet.Cells[19, 3];
