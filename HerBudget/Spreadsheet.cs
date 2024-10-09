@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Microsoft.Office.Interop.Excel;
+using System.Collections;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HerBudget
@@ -87,6 +88,12 @@ namespace HerBudget
             if (FindSheet(sheets, exp))
             {
                 worksheet = (Excel.Worksheet)sheets[exp.Month];
+                Excel.Range cell1 = (Excel.Range)worksheet.Cells[8, 3];//
+                Excel.Range cell2 = (Excel.Range)worksheet.Cells[19, 3];//
+
+                string cell1v = cell1.Value.ToString();
+                string cell2v = cell2.Value.ToString();
+                Console.WriteLine($"tv: {cell1v} | misc: {cell2v}");
             }
             else
             {
