@@ -212,9 +212,6 @@ namespace HerBudget
         //        {
         //            cell3v = 1;
         //        }
-        double Internet = 0, Car_Insurance = 0, Housing = 0, Energy = 0, Gas = 0, Income = 0,
-            Phones = 0, Entertainment = 0, Dental = 0, Healthcare = 0, Savings = 0, Car_Gas = 0,
-            Groceries = 0, Restaurant = 0, Necessary = 0, Unnecessary = 0;
         private void FindCellValues(out double Internet, out double Car_Insurance, out double Housing,
             out double Energy, out double Gas, out double Income, out double Phones, out double Entertainment,
             out double Dental, out double Healthcare, out double Savings, out double Car_Gas, out double Groceries,
