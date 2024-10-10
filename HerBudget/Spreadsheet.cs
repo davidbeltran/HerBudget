@@ -217,7 +217,15 @@ namespace HerBudget
             out double Dental, out double Healthcare, out double Savings, out double Car_Gas, out double Groceries,
             out double Restaurant, out double Necessary, out double Unnecessary, Excel._Worksheet sheet)
         {
-            Internet = 0;
+            Excel.Range InternetCell = (Excel.Range)sheet.Cells[2, 3];
+            if (InternetCell != null)
+            {
+                Internet = Convert.ToDouble(InternetCell.Value.ToString());
+            }
+            else
+            {
+                Internet = 0.0;
+            }
         }
 
         private Expense AskUser(Expense exp)
