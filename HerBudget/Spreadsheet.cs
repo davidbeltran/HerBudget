@@ -99,11 +99,11 @@ namespace HerBudget
                 double cell3v;
                 if (cell3 != null)
                 {
-                    cell3v = 1;
+                    cell3v = 0;
                 }
                 else
                 {
-                    cell3v = 0;
+                    cell3v = 1;
                 }
             }
             else
