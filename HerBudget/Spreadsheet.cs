@@ -96,7 +96,6 @@ namespace HerBudget
                 double cell1v = Convert.ToDouble(cell1.Value.ToString());
                 double cell2v = Convert.ToDouble(cell2.Value.ToString());
                 double cell3v = Convert.ToDouble(cell3.Value.ToString());
-                Console.WriteLine($"tv: {cell1v.GetType()} | misc: {cell2v.GetType()} | internet: {cell3v.GetType()}");
             }
             else
             {
