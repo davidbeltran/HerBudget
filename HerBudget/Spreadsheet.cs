@@ -252,7 +252,7 @@ namespace HerBudget
 
         private void DisplayInstructions()
         {
-            Console.WriteLine("\n\n\n\n*******************************************************************\n" + 
+            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n*******************************************************************\n" + 
                 "All bill transactions are sorted. Please sort expense transactions.\n" +
                 "Select number corresponding to category.\n" +
                 "*******************************************************************\n" +
