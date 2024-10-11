@@ -128,9 +128,14 @@ namespace HerBudget
 
         private void AddBills(Excel._Worksheet sheet)
         {
-            double Internet = 0, Car_Insurance = 0, Housing = 0, Energy = 0, Gas = 0, Income = 0,
-                Phones = 0, Entertainment = 0, Dental = 0, Healthcare = 0, Savings = 0, Car_Gas = 0,
-                Groceries = 0, Restaurant = 0, Necessary = 0, Unnecessary = 0;
+            double Internet, Car_Insurance, Housing, Energy, Gas, Income,
+                Phones, Entertainment, Dental, Healthcare, Savings, Car_Gas,
+                Groceries, Restaurant, Necessary, Unnecessary;
+
+            FindCellValues(out Internet, out Car_Insurance, out Housing, out Energy, out Gas,
+                out Income, out Phones, out Entertainment, out Dental, out Healthcare,
+                out Savings, out Car_Gas, out Groceries, out Restaurant,
+                out Necessary, out Unnecessary, sheet);
                         
             DisplayInstructions();
             foreach (Expense exp in  Expenses)
