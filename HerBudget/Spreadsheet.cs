@@ -115,34 +115,41 @@ namespace HerBudget
             DisplayInstructions();
             foreach (Expense exp in  Expenses)
             {
-                if (!exp.Category.Equals(CategoryType.EXPENSE))
+                if (exp.Month == sheet.Name)
                 {
-                    switch (exp.SubCategory)
+                    if (!exp.Category.Equals(CategoryType.EXPENSE))
                     {
-                        case SubCategoryType.INTERNET: Internet += exp.Amount; break;
-                        case SubCategoryType.CAR_INSURANCE: Car_Insurance += exp.Amount; break;
-                        case SubCategoryType.RENT: Housing += exp.Amount; break;
-                        case SubCategoryType.ELECTRIC: Energy += exp.Amount; break;
-                        case SubCategoryType.GAS_HOME: Gas += exp.Amount; break;
-                        case SubCategoryType.PHONES: Phones += exp.Amount; break;
-                        case SubCategoryType.TV: Entertainment += exp.Amount; break;
-                        case SubCategoryType.DENTAL: Dental += exp.Amount; break;
-                        case SubCategoryType.HEALTHCARE: Healthcare += exp.Amount; break;
-                        case SubCategoryType.SAVINGS: Savings += exp.Amount; break;
-                        default: Income += exp.Amount; break;
+                        switch (exp.SubCategory)
+                        {
+                            case SubCategoryType.INTERNET: Internet += exp.Amount; break;
+                            case SubCategoryType.CAR_INSURANCE: Car_Insurance += exp.Amount; break;
+                            case SubCategoryType.RENT: Housing += exp.Amount; break;
+                            case SubCategoryType.ELECTRIC: Energy += exp.Amount; break;
+                            case SubCategoryType.GAS_HOME: Gas += exp.Amount; break;
+                            case SubCategoryType.PHONES: Phones += exp.Amount; break;
+                            case SubCategoryType.TV: Entertainment += exp.Amount; break;
+                            case SubCategoryType.DENTAL: Dental += exp.Amount; break;
+                            case SubCategoryType.HEALTHCARE: Healthcare += exp.Amount; break;
+                            case SubCategoryType.SAVINGS: Savings += exp.Amount; break;
+                            default: Income += exp.Amount; break;
+                        }
+                    }
+                    else
+                    {
+                        AskUser(exp);
+                        switch (exp.SubCategory)
+                        {
+                            case SubCategoryType.GAS_CAR: Car_Gas += exp.Amount; break;
+                            case SubCategoryType.GROCERIES: Groceries += exp.Amount; break;
+                            case SubCategoryType.RESTAURANT: Restaurant += exp.Amount; break;
+                            case SubCategoryType.MISC_NECESSARY: Necessary += exp.Amount; break;
+                            case SubCategoryType.MISC_UNNECESSARY: Unnecessary += exp.Amount; break;
+                        }
                     }
                 }
                 else
                 {
-                    AskUser(exp);
-                    switch(exp.SubCategory)
-                    {
-                        case SubCategoryType.GAS_CAR: Car_Gas += exp.Amount; break;
-                        case SubCategoryType.GROCERIES: Groceries += exp.Amount; break;
-                        case SubCategoryType.RESTAURANT: Restaurant += exp.Amount; break;
-                        case SubCategoryType.MISC_NECESSARY: Necessary += exp.Amount; break;
-                        case SubCategoryType.MISC_UNNECESSARY: Unnecessary += exp.Amount; break;
-                    }
+                    continue;
                 }
             }
 
