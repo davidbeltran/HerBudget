@@ -217,15 +217,32 @@ namespace HerBudget
             out double Dental, out double Healthcare, out double Savings, out double Car_Gas, out double Groceries,
             out double Restaurant, out double Necessary, out double Unnecessary, Excel._Worksheet sheet)
         {
-            Excel.Range InternetCell = (Excel.Range)sheet.Cells[2, 3];
-            if (InternetCell != null)
+            Internet = CellValue(2, 3, sheet);
+            Car_Insurance = CellValue(3, 3, sheet);
+            Housing = CellValue(4, 3, sheet);
+            Energy = CellValue(5, 3, sheet);
+            Gas = CellValue(6, 3, sheet);
+            Income = CellValue(24, 3, sheet);
+            Internet = CellValue(2, 3, sheet);
+            Internet = CellValue(2, 3, sheet);
+            Internet = CellValue(2, 3, sheet);
+            Internet = CellValue(2, 3, sheet);
+            Internet = CellValue(2, 3, sheet);
+            Internet = CellValue(2, 3, sheet);
+            Internet = CellValue(2, 3, sheet);
+            Internet = CellValue(2, 3, sheet);
+            Internet = CellValue(2, 3, sheet);
+            Internet = CellValue(2, 3, sheet);
+        }
+
+        private double CellValue(int row, int column, Excel._Worksheet sheet)
+        {
+            Excel.Range CellVal = (Excel.Range)sheet.Cells[row, column];
+            if (CellVal != null)
             {
-                Internet = Convert.ToDouble(InternetCell.Value.ToString());
+                return Convert.ToDouble(CellVal.Value.ToString());
             }
-            else
-            {
-                Internet = 0.0;
-            }
+            return 0.0;
         }
 
         private Expense AskUser(Expense exp)
