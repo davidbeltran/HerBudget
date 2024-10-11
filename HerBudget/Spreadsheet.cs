@@ -212,7 +212,7 @@ namespace HerBudget
             Excel.Range CellVal = (Excel.Range)sheet.Cells[row, column];
             if (CellVal.Value != null)
             {
-                Console.WriteLine($"it is not an empty string it is a {CellVal.Value.GetType()}");
+                Console.WriteLine($"it is not null it is a {CellVal.Value.GetType()}");
             }
             else
             {
