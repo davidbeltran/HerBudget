@@ -208,12 +208,17 @@ namespace HerBudget
 
         private double CellValue(int row, int column, Excel._Worksheet sheet)
         {
+            double Value;
             Excel.Range CellVal = (Excel.Range)sheet.Cells[row, column];
             if (CellVal != null)
             {
-                return Convert.ToDouble(CellVal.Value.ToString());
+                Value = Convert.ToDouble(CellVal.Value.ToString());
             }
-            return 0.0;
+            else
+            {
+                Value = 0.0;
+            }
+            return Value;
         }
 
         private Expense AskUser(Expense exp)
