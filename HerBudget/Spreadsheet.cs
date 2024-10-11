@@ -252,9 +252,10 @@ namespace HerBudget
 
         private void DisplayInstructions()
         {
-            Console.WriteLine("All bill transactions are sorted. Please sort expense transactions.\n" +
-                                "Select number corresponding to category.\n" +
-                                "1. Gas\n2. Groceries\n3. Restaurant\n4. Misc(Necessary)\n5. Misc(Unnecessary)");
+            Console.WriteLine("\n\n\n\n*******************************************************************" + 
+                "All bill transactions are sorted. Please sort expense transactions.\n" +
+                "Select number corresponding to category.\n" +
+                "1. Gas\n2. Groceries\n3. Restaurant\n4. Misc(Necessary)\n5. Misc(Unnecessary)");
         }
 
         private string DisplayTransaction(Expense exp)
