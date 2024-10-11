@@ -210,7 +210,7 @@ namespace HerBudget
         {
             double Value;
             Excel.Range CellVal = (Excel.Range)sheet.Cells[row, column];
-            Console.WriteLine($"Cell Value: {CellVal}");
+            Console.WriteLine($"Cell Value: {CellVal.Value}");
             if (CellVal != null)
             {
                 Value = Convert.ToDouble(CellVal.Value.ToString());
