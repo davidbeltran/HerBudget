@@ -195,23 +195,6 @@ namespace HerBudget
             sheet.Cells[26, 3] = "=C24-C22";
         }
 
-        //worksheet = (Excel.Worksheet) sheets[exp.Month];
-        //Excel.Range cell1 = (Excel.Range)worksheet.Cells[8, 3];
-        //Excel.Range cell2 = (Excel.Range)worksheet.Cells[19, 3];
-        //Excel.Range cell3 = (Excel.Range)worksheet.Cells[2, 3];
-
-        //double cell1v = Convert.ToDouble(cell1.Value.ToString());
-        //double cell2v = Convert.ToDouble(cell2.Value.ToString());
-        ////double cell3v = Convert.ToDouble(cell3.Value.ToString());
-        //double cell3v;
-        //        if (cell3 != null)
-        //        {
-        //            cell3v = 0;
-        //        }
-        //        else
-        //        {
-        //            cell3v = 1;
-        //        }
         private void FindCellValues(out double Internet, out double Car_Insurance, out double Housing,
             out double Energy, out double Gas, out double Income, out double Phones, out double Entertainment,
             out double Dental, out double Healthcare, out double Savings, out double Car_Gas, out double Groceries,
@@ -223,9 +206,9 @@ namespace HerBudget
             Energy = CellValue(5, 3, sheet);
             Gas = CellValue(6, 3, sheet);
             Income = CellValue(24, 3, sheet);
-            Internet = CellValue(2, 3, sheet);
-            Internet = CellValue(2, 3, sheet);
-            Internet = CellValue(2, 3, sheet);
+            Phones = CellValue(7, 3, sheet);
+            Entertainment = CellValue(8, 3, sheet);
+            Dental = CellValue(2, 3, sheet);
             Internet = CellValue(2, 3, sheet);
             Internet = CellValue(2, 3, sheet);
             Internet = CellValue(2, 3, sheet);
