@@ -239,7 +239,6 @@ namespace HerBudget
                     break;
                 }
             }
-            //return exp;
         }
 
         private void DisplayInstructions()
