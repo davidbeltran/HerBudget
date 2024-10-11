@@ -134,7 +134,7 @@ namespace HerBudget
                 }
                 else
                 {
-                    Expense newExp = AskUser(exp);
+                    AskUser(exp);
                     switch(exp.SubCategory)
                     {
                         case SubCategoryType.GAS_CAR: Car_Gas += exp.Amount; break;
@@ -214,7 +214,7 @@ namespace HerBudget
             return Value;
         }
 
-        private Expense AskUser(Expense exp)
+        private void AskUser(Expense exp)
         {
             string? ResponseCheck;
             while (true)
@@ -239,7 +239,7 @@ namespace HerBudget
                     break;
                 }
             }
-            return exp;
+            //return exp;
         }
 
         private void DisplayInstructions()
