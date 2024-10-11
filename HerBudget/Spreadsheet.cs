@@ -208,14 +208,14 @@ namespace HerBudget
             Income = CellValue(24, 3, sheet);
             Phones = CellValue(7, 3, sheet);
             Entertainment = CellValue(8, 3, sheet);
-            Dental = CellValue(2, 3, sheet);
-            Internet = CellValue(2, 3, sheet);
-            Internet = CellValue(2, 3, sheet);
-            Internet = CellValue(2, 3, sheet);
-            Internet = CellValue(2, 3, sheet);
-            Internet = CellValue(2, 3, sheet);
-            Internet = CellValue(2, 3, sheet);
-            Internet = CellValue(2, 3, sheet);
+            Dental = CellValue(9, 3, sheet);
+            Healthcare = CellValue(10, 3, sheet);
+            Savings = CellValue(11, 3, sheet);
+            Car_Gas = CellValue(15, 3, sheet);
+            Groceries = CellValue(16, 3, sheet);
+            Restaurant = CellValue(17, 3, sheet);
+            Necessary = CellValue(18, 3, sheet);
+            Unnecessary = CellValue(19, 3, sheet);
         }
 
         private double CellValue(int row, int column, Excel._Worksheet sheet)
