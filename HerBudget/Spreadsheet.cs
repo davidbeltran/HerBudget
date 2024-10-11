@@ -33,7 +33,6 @@ namespace HerBudget
             excel.Visible = false;
 
             //TODO
-            //-still need to adjust AddBills() method to separte adding amounts to their appropriate months
             //-look at askUser() method. the yes response is not working properly if you enter anything other than y or n
             if (!File.Exists(fullPath))
             {
