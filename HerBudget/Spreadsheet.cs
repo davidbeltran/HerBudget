@@ -210,15 +210,8 @@ namespace HerBudget
         {
             double Value;
             Excel.Range CellVal = (Excel.Range)sheet.Cells[row, column];
+
             if (CellVal.Value != null)
-            {
-                Console.WriteLine($"it is not null it is a {CellVal.Value.GetType()}");
-            }
-            else
-            {
-                Console.WriteLine("it IS a null");
-            }
-            if (CellVal != null)
             {
                 Value = Convert.ToDouble(CellVal.Value.ToString());
             }
