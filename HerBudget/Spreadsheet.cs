@@ -210,13 +210,13 @@ namespace HerBudget
         {
             double Value;
             Excel.Range CellVal = (Excel.Range)sheet.Cells[row, column];
-            if (CellVal.Value != "")
+            if (CellVal.Value != null)
             {
-                Console.WriteLine("it is not an empty string");
+                Console.WriteLine($"it is not an empty string it is a {CellVal.Value.GetType()}");
             }
             else
             {
-                Console.WriteLine("it IS an empty string");
+                Console.WriteLine("it IS a null");
             }
             if (CellVal != null)
             {
