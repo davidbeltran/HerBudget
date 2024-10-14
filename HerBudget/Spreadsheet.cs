@@ -244,7 +244,7 @@ namespace HerBudget
                 }
                 else
                 {
-                    Console.WriteLine("You must select (y)es or (n)o only.");
+                    Console.WriteLine("\n\nYou must select (y)es or (n)o only.");
                     continue;
                 }
             }
