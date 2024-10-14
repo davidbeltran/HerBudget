@@ -32,8 +32,6 @@ namespace HerBudget
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
-            //TODO
-            //-look at askUser() method. the yes response is not working properly if you enter anything other than y or n
             if (!File.Exists(fullPath))
             {
                 Excel.Workbook workbook = excel.Workbooks.Add();
