@@ -224,8 +224,8 @@ namespace HerBudget
             while (true)
             {
                 string selection = DisplayTransaction(exp);
-                Console.WriteLine($"You selected {selection}.\nIs this correct?");
-                ResponseCheck = Console.ReadLine()!.ToLower();
+                Console.WriteLine($"You selected {selection}.\nIs this correct? (Y/N)");
+                ResponseCheck = Console.ReadLine()!.Trim().ToLower();
                 if (ResponseCheck == "n" || ResponseCheck == "no")
                 {
                     continue;
