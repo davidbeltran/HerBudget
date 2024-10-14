@@ -240,6 +240,7 @@ namespace HerBudget
                 }
                 else if (ResponseCheck == "n" || ResponseCheck == "no")
                 {
+                    Console.WriteLine("\nNo problem :)\nGo ahead and try again.");
                     continue;
                 }
                 else
