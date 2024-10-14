@@ -226,21 +226,21 @@ namespace HerBudget
                 string selection = DisplayTransaction(exp);
                 Console.WriteLine($"You selected {selection}.\nIs this correct? (Y/N)");
                 ResponseCheck = Console.ReadLine()!.Trim().ToLower();
-                if (ResponseCheck == "n" || ResponseCheck == "no")
+                if (ResponseCheck == "y" || ResponseCheck == "yes")
                 {
-                    continue;
-                }
-                else if (ResponseCheck == "y" || ResponseCheck == "yes")
-                {
-                    switch(selection)
+                    switch (selection)
                     {
                         case "Gas": exp.SubCategory = SubCategoryType.GAS_CAR; break;
                         case "Groceries": exp.SubCategory = SubCategoryType.GROCERIES; break;
                         case "Restaurant": exp.SubCategory = SubCategoryType.RESTAURANT; break;
                         case "Misc(Necessary)": exp.SubCategory = SubCategoryType.MISC_NECESSARY; break;
-                        case "Misc(Unnecessary)": exp.SubCategory= SubCategoryType.MISC_UNNECESSARY; break;
+                        case "Misc(Unnecessary)": exp.SubCategory = SubCategoryType.MISC_UNNECESSARY; break;
                     }
                     break;
+                }
+                else if (ResponseCheck == "n" || ResponseCheck == "no")
+                {
+                    continue;
                 }
                 else
                 {
