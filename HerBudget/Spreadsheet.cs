@@ -220,17 +220,17 @@ namespace HerBudget
 
         private void AskUser(Expense exp)
         {
-            string? ResponseCheck;
+            string ResponseCheck;
             while (true)
             {
                 string selection = DisplayTransaction(exp);
                 Console.WriteLine($"You selected {selection}.\nIs this correct?");
-                ResponseCheck = Console.ReadLine();
-                if (ResponseCheck!.ToLower() == "n" || ResponseCheck!.ToLower() == "no")
+                ResponseCheck = Console.ReadLine()!.ToLower();
+                if (ResponseCheck == "n" || ResponseCheck == "no")
                 {
                     continue;
                 }
-                else
+                else if (ResponseCheck == "y" || ResponseCheck == "yes")
                 {
                     switch(selection)
                     {
@@ -241,6 +241,11 @@ namespace HerBudget
                         case "Misc(Unnecessary)": exp.SubCategory= SubCategoryType.MISC_UNNECESSARY; break;
                     }
                     break;
+                }
+                else
+                {
+                    Console.WriteLine("You must select (y)es or (n)o only.");
+                    continue;
                 }
             }
         }
