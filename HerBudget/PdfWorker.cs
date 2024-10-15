@@ -34,16 +34,19 @@ namespace HerBudget
 
             XDocument doc = XDocument.Load(this.FileStorage);
             XElement? root = doc.Element("PdfFiles");
+            string pattern = @"[^/\\]+\.pdf$";
 
             if (root != null)
             {
-                bool alreadyExists = root.Elements("PdfFile").Any(e => e.Value == this.PdfDoc);
+                Match match = Regex.Match(this.PdfDoc, pattern);
+                string pdfFile = match.Value;
+                bool alreadyExists = root.Elements("PdfFile").Any(e => e.Value == pdfFile);
                 if (alreadyExists)
                 {
                     Console.WriteLine($"{this.PdfDoc} has already been processed.");
                     return true;
                 }
-                root.Add(new XElement("PdfFile", this.PdfDoc));
+                root.Add(new XElement("PdfFile", pdfFile));
                 doc.Save(this.FileStorage);
                 return false;
             }
