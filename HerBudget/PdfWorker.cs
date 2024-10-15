@@ -22,58 +22,11 @@ namespace HerBudget
         }
 
         /// <summary>
-        /// Finds PDF file name in storage file if it exists
-        /// </summary>
-        /// <returns>true if file name exists. false if it does not exist</returns>
-        protected bool SearchForPdf()
-        {
-            if (File.Exists(this.FileStorage))
-            {
-                try
-                {
-                    using StreamReader sr = new StreamReader(this.FileStorage);
-                    string PdfFiles = sr.ReadToEnd();
-                    if (Regex.IsMatch(PdfFiles, this.PdfDoc))
-                    {
-                        return true;
-                    }
-                }
-                catch (IOException ex)
-                {
-                    Console.WriteLine("Error reading the idStore.txt file", ex.Message);
-                }
-            }
-            else
-            {
-                File.CreateText(this.FileStorage).Close();
-            }
-            return false;
-        }
-
-        /// <summary>
         /// Writes pdf file name into storage if file has never been processed
         /// </summary>
         /// <returns>returns false if pdf file has never been processed</returns>
         public bool CheckDuplicatePdf()
         {
-            //if (!SearchForPdf())
-            //{
-            //    try
-            //    {
-            //        using StreamWriter sw = new StreamWriter(this.FileStorage, true);
-            //        sw.WriteLine(this.PdfDoc);
-            //    }
-            //    catch (IOException ex)
-            //    {
-            //        Console.WriteLine(ex.Message);
-            //    }
-            //    return false;
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"{this.PdfDoc} has already been processed.");
-            //}
-            //return true;
             if (!File.Exists(this.FileStorage))
             {
                 new XDocument(new XElement("PdfFiles")).Save(this.FileStorage);

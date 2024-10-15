@@ -29,19 +29,19 @@ namespace HerBudget
         public void SendToDatabase()
         {
             PdfWorker worker = CreateWorker();
-            //if (!worker.CheckDuplicatePdf())
-            //{
-            //    Database db = new Database();
-            //    db.CreateTable(worker.CreateExpenseList());
-            //    db.CloseDatabase();
-            //}
-            Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
-            ss.AddToExcel();
+            if (!worker.CheckDuplicatePdf())
+            {
+                Database db = new Database();
+                db.CreateTable(worker.CreateExpenseList());
+                db.CloseDatabase();
+                Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
+                ss.AddToExcel();
+            }
         }
 
         private PdfWorker CreateWorker()
         {
-            string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/pdfs/idStore.txt";
+            string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/pdfs/idStore.xml";
             string ReBank = "A\\.pdf|C\\.pdf";
             Match m = Regex.Match(this.PathPdf, ReBank);
             PdfWorker? worker = null;
