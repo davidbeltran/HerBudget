@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
+using System.Xml.Linq;
 
 namespace HerBudget
 {
@@ -55,22 +56,28 @@ namespace HerBudget
         /// <returns>returns false if pdf file has never been processed</returns>
         public bool CheckDuplicatePdf()
         {
-            if (!SearchForPdf())
+            //if (!SearchForPdf())
+            //{
+            //    try
+            //    {
+            //        using StreamWriter sw = new StreamWriter(this.FileStorage, true);
+            //        sw.WriteLine(this.PdfDoc);
+            //    }
+            //    catch (IOException ex)
+            //    {
+            //        Console.WriteLine(ex.Message);
+            //    }
+            //    return false;
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"{this.PdfDoc} has already been processed.");
+            //}
+            //return true;
+            string xmlPath = this.FileStorage;
+            if (!File.Exists(xmlPath))
             {
-                try
-                {
-                    using StreamWriter sw = new StreamWriter(this.FileStorage, true);
-                    sw.WriteLine(this.PdfDoc);
-                }
-                catch (IOException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                return false;
-            }
-            else
-            {
-                Console.WriteLine($"{this.PdfDoc} has already been processed.");
+                new XDocument(new XElement("PdfFiles")).Save(xmlPath);
             }
             return true;
         }
