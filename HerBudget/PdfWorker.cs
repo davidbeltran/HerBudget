@@ -74,10 +74,25 @@ namespace HerBudget
             //    Console.WriteLine($"{this.PdfDoc} has already been processed.");
             //}
             //return true;
-            string xmlPath = this.FileStorage;
-            if (!File.Exists(xmlPath))
+            if (!File.Exists(this.FileStorage))
             {
-                new XDocument(new XElement("PdfFiles")).Save(xmlPath);
+                new XDocument(new XElement("PdfFiles")).Save(this.FileStorage);
+            }
+
+            XDocument doc = XDocument.Load(this.FileStorage);
+            XElement? root = doc.Element("PdfFiles");
+
+            if (root != null)
+            {
+                bool alreadyExists = root.Elements("PdfFile").Any(e => e.Value == this.PdfDoc);
+                if (alreadyExists)
+                {
+                    Console.WriteLine($"{this.PdfDoc} has already been processed.");
+                    return true;
+                }
+                root.Add(new XElement("PdfFile", this.PdfDoc));
+                doc.Save(this.FileStorage);
+                return false;
             }
             return true;
         }
