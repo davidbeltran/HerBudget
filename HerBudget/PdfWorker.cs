@@ -43,7 +43,7 @@ namespace HerBudget
                 bool alreadyExists = root.Elements("PdfFile").Any(e => e.Value == pdfFile);
                 if (alreadyExists)
                 {
-                    Console.WriteLine($"{this.PdfDoc} has already been processed.");
+                    Console.WriteLine($"{pdfFile} has already been processed.");
                     return true;
                 }
                 root.Add(new XElement("PdfFile", pdfFile));
