@@ -1,4 +1,7 @@
-﻿using System.Runtime.CompilerServices;
+﻿/*
+ * Author: David Beltran
+ */
+
 using System.Text.RegularExpressions;
 
 namespace HerBudget
