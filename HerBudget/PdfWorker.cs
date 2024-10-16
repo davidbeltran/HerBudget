@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * Author: David Beltran
+ */
+
+using System.Collections;
 using System.Text.RegularExpressions;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
 using UglyToad.PdfPig;
@@ -7,18 +11,19 @@ using System.Xml.Linq;
 
 namespace HerBudget
 {
+    /// <summary>
+    /// Abstract class allowing each bank unique creation of an expense list
+    /// </summary>
     public abstract class PdfWorker
     {
-        protected string FileStorage {  get; set; }
-        protected string PdfDoc { get; set; }
-        protected string ReYear { get; set; }
-        protected string ReDetail { get; set; } = null!;
+        protected string FileStorage {  get; set; } //XML file name
+        protected string PdfDoc { get; set; } //PDF file path
+        protected string ReDetail { get; set; } = null!; // RegEx pattern catered to each inhirited subclass
 
         protected PdfWorker(string fileStorage, string pdfDoc)
         {
             this.FileStorage = fileStorage;
             this.PdfDoc = pdfDoc;
-            this.ReYear = "\\d{2}";
         }
 
         /// <summary>
@@ -59,7 +64,8 @@ namespace HerBudget
         /// <returns>string of year</returns>
         protected string GetYear()
         {
-            MatchCollection matches = Regex.Matches(this.PdfDoc, this.ReYear);
+            string RgxYear = "\\d{2}";
+            MatchCollection matches = Regex.Matches(this.PdfDoc, RgxYear);
             string year = "";
             foreach (Match match in matches)
             {
