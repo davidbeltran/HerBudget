@@ -1,5 +1,13 @@
-﻿namespace HerBudget
+﻿/*
+ * Author: David Beltran
+ */
+
+namespace HerBudget
 {
+    /// <summary>
+    /// Enum representing main budget category types.
+    /// Bills are recuring, expenses are non-recuring, incomes are deposits to bank
+    /// </summary>
     public enum CategoryType
     {
         BILL, EXPENSE, INCOME
