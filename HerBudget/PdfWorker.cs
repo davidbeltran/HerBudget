@@ -34,13 +34,13 @@ namespace HerBudget
 
             XDocument doc = XDocument.Load(this.FileStorage);
             XElement? root = doc.Element("PdfFiles");
-            string pattern = @"[^/\\]+\.pdf$";
+            string pattern = @"[^/\\]+\.pdf$";//Regex for finding pdf file name at end of entire path
 
             if (root != null)
             {
                 Match match = Regex.Match(this.PdfDoc, pattern);
                 string pdfFile = match.Value;
-                bool alreadyExists = root.Elements("PdfFile").Any(e => e.Value == pdfFile);
+                bool alreadyExists = root.Elements("PdfFile").Any(e => e.Value == pdfFile);//Linq search
                 if (alreadyExists)
                 {
                     Console.WriteLine($"{pdfFile} has already been processed.");
