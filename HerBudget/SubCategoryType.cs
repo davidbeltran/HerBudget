@@ -1,5 +1,11 @@
-﻿namespace HerBudget
+﻿/*
+ * Author: David Beltran
+ */
+namespace HerBudget
 {
+    /// <summary>
+    /// Enum representing main budget subcategory types.
+    /// </summary>
     public enum SubCategoryType
     {
         RENT, INTERNET, CAR_INSURANCE, ELECTRIC, GAS_HOME, PHONES, TV, HEALTHCARE, DENTAL, 
