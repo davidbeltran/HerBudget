@@ -22,7 +22,7 @@ namespace HerBudget
         }
 
         /// <summary>
-        /// Writes pdf file name into storage if file has never been processed
+        /// Writes pdf file name into XML storage if file has never been processed
         /// </summary>
         /// <returns>returns false if pdf file has never been processed</returns>
         public bool CheckDuplicatePdf()
