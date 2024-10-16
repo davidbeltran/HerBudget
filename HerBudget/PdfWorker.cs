@@ -20,6 +20,11 @@ namespace HerBudget
         protected string PdfDoc { get; set; } //PDF file path
         protected string ReDetail { get; set; } = null!; // RegEx pattern catered to each inhirited subclass
 
+        /// <summary>
+        /// Abstract constructor
+        /// </summary>
+        /// <param name="fileStorage">XML file path</param>
+        /// <param name="pdfDoc">PDF file path</param>
         protected PdfWorker(string fileStorage, string pdfDoc)
         {
             this.FileStorage = fileStorage;
