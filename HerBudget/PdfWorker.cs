@@ -96,6 +96,10 @@ namespace HerBudget
             return PageText;
         }
 
+        /// <summary>
+        /// Each individual bank will have this method catered in inherited class
+        /// </summary>
+        /// <returns>Needs to return an arraylist of Expense objects</returns>
         public abstract ArrayList CreateExpenseList();
     }
 }
