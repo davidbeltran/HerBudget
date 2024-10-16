@@ -6,6 +6,9 @@ using System.Text.RegularExpressions;
 
 namespace HerBudget
 {
+    /// <summary>
+    /// Used to store individual expense data
+    /// </summary>
     public class Expense
     {
         public DateTime Date {  get; set; }
@@ -16,16 +19,25 @@ namespace HerBudget
         public string Month { get; set; }
         public string Year { get; set; }
 
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="date">date of expense</param>
+        /// <param name="detail">describes where purchase was made</param>
+        /// <param name="Amount">usd cost of purchase</param>
         public Expense(DateTime date, string detail, double Amount)
         {
             this.Date = date;
             this.Detail = detail;
             this.Amount = Amount;
             Categorize();
-            this.Month = date.ToString("MMM");
+            this.Month = date.ToString("MMM"); // Used to name excel worksheet
             this.Year = date.Year.ToString();
         }
+
+        /// <summary>
+        /// First step to categorize between a bill or expense
+        /// </summary>
         private void Categorize()
         {
             string ReCat = "CENTRE CLUB|SPECTRUM|UNITED FIN CAS INS|SO CAL EDISON|SO CAL GAS|DISNEY|" +
