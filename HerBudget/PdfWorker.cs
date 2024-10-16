@@ -69,11 +69,11 @@ namespace HerBudget
         }
 
         /// <summary>
-        /// 
+        /// Extracts entire PDF content and stores in a string
         /// </summary>
-        /// <param name="pdfDoc"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
+        /// <param name="pdfDoc">full path of pdf file</param>
+        /// <returns>pdf content as a string</returns>
+        /// <exception cref="ArgumentException">Message if pdf file not found in system</exception>
         protected string PreparePdf(string pdfDoc)
         {
             string PageText = "";
