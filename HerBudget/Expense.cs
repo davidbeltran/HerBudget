@@ -51,6 +51,10 @@ namespace HerBudget
             else { this.Category = CategoryType.EXPENSE; }
         }
 
+        /// <summary>
+        /// loads subcategory of Expense object to allow organization on Excel sheet
+        /// </summary>
+        /// <param name="reCat">RegEx pattern to find subcategory description</param>
         private void SubCategorize(string reCat)
         {
             Match m = Regex.Match(this.Detail, reCat);
