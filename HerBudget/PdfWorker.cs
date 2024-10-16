@@ -68,6 +68,12 @@ namespace HerBudget
             return year;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pdfDoc"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         protected string PreparePdf(string pdfDoc)
         {
             string PageText = "";
@@ -85,7 +91,7 @@ namespace HerBudget
             }
             catch (Exception ex)
             {
-                throw new ArgumentException("**PDF file not included in folder. Copy from Python project**", ex.Message);
+                throw new ArgumentException("PDF file not found.", ex.Message);
             }
             return PageText;
         }
