@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * Author: David Beltran
+ */
+
+using System.Collections;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HerBudget
