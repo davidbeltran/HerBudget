@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * Author: David Beltran
+ */
+
+using System.Collections;
 using System.Text.RegularExpressions;
 
 namespace HerBudget
