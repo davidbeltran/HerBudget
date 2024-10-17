@@ -39,13 +39,17 @@ namespace HerBudget
             }
         }
 
+        /// <summary>
+        /// Utilizes the factory design pattern to instantiate PdfWorker object dependent on which bank statement loaded
+        /// </summary>
+        /// <returns>PdfWorker object corresponding to bank subclass</returns>
         private PdfWorker CreateWorker()
         {
             string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/pdfs/idStore.xml";
             string ReBank = "A\\.pdf|C\\.pdf";
             Match m = Regex.Match(this.PathPdf, ReBank);
             PdfWorker? worker = null;
-            switch (m.Value)
+            switch (m.Value) //More can be added if different banks are used. Each bank will need own subclass
             {
                 case "A.pdf":
                     worker = new AllyPdfWorker(PdfNameStorage, this.PathPdf); break;
