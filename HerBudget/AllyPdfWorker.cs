@@ -24,6 +24,11 @@ namespace HerBudget
             "WEB Funds Transfer|NOW Withdrawal|NOW Deposit|eCheck Deposit)\\s" +
             "(\\n.*\\s)?(?:.*\\s)*?\\$(.+\\.\\d{2}) -\\$(.+\\.\\d{2}) (?:-?\\$.+\\.\\d{2}[\\s|A]))";
         }
+
+        /// <summary>
+        /// Inherited method to create Expense object list catered specifically for Ally Bank PDF statements
+        /// </summary>
+        /// <returns>ArryList of Expense objects</returns>
         public override ArrayList CreateExpenseList()
         {
             string pdfText = PreparePdf(this.PdfDoc);
@@ -40,7 +45,7 @@ namespace HerBudget
 
                 string detail;
 
-                //May need to add or statement to include unseen transfers from accounts outside Ally
+                //May need to add 'or' statement to include unseen transfers from accounts outside Ally
                 if ((detail2.Equals("REQUESTED TRANSFER FROM ALLY BANK")) ||
                     (detail2.Equals("CHASE CREDIT CRD EPAY~ FUTURE")))
                 {
