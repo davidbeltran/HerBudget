@@ -12,6 +12,11 @@ namespace HerBudget
     /// </summary>
     public class AllyPdfWorker : PdfWorker
     {
+        /// <summary>
+        /// Subclass constructor
+        /// </summary>
+        /// <param name="fileStorage">XML file path holding list of PDF file names</param>
+        /// <param name="pdfDoc">Ally PDF file path</param>
         public AllyPdfWorker(string fileStorage, string pdfDoc) : base(fileStorage, pdfDoc)
         {
             this.ReDetail = "(?:((?:0[1-9]|1[1,2])/(?:0[1-9]|[1-2][0-9]|3[0-1])/(?:\\d{4})) " +
