@@ -2,7 +2,6 @@
  * Author: David Beltran
  */
 
-
 namespace HerBudget
 {
     internal class Program
