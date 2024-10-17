@@ -1,7 +1,14 @@
-﻿using System.Collections;
+﻿/*
+ * Author: David Beltran
+ */
+
+using System.Collections;
 
 namespace HerBudget
 {
+    /// <summary>
+    /// Class utilized for sorting expenses by comparing both months in each PDF file
+    /// </summary>
     public class DateComparer : IComparer
     {
         public int Compare(object? x, object? y)
