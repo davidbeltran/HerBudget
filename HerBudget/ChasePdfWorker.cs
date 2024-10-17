@@ -40,10 +40,10 @@ namespace HerBudget
                 double amount = double.Parse(match.Groups[3].Value);
                 if ((amount < 0) && (!Regex.IsMatch(detail, "OFFER:")))
                 {
-                    continue;
+                    continue; //Unregistered credits paid from Ally/checking account to credit card account
                 }
                 Expense exp = new Expense(date, detail, amount);
-                if ((amount < 0) && (Regex.IsMatch(detail, "OFFER:")))
+                if ((amount < 0) && (Regex.IsMatch(detail, "OFFER:"))) //Credits that come from outside client expense circulation
                 {
                     exp.Amount = Math.Abs(amount);
                     exp.Category = CategoryType.INCOME;
@@ -51,8 +51,8 @@ namespace HerBudget
                 }
                 ExpenseList.Add(exp);
             }
-            IComparer comparer = new DateComparer();
-            ExpenseList.Sort(comparer);
+            IComparer comparer = new DateComparer(); //Sorts the Expenses ArrayList by Expense object month
+            ExpenseList.Sort(comparer); //Needed to help split PDF file tables that include two months
             return ExpenseList;
         }
     }
