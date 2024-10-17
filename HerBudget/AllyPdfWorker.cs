@@ -7,6 +7,9 @@ using System.Text.RegularExpressions;
 
 namespace HerBudget
 {
+    /// <summary>
+    /// Subclass of the PdfWorker abstract class for Ally Bank
+    /// </summary>
     public class AllyPdfWorker : PdfWorker
     {
         public AllyPdfWorker(string fileStorage, string pdfDoc) : base(fileStorage, pdfDoc)
