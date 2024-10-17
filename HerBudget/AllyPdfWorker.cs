@@ -44,40 +44,41 @@ namespace HerBudget
                 double amount2 = double.Parse((match.Groups[5].Value.Trim()));
 
                 string detail;
-
                 //May need to add 'or' statement to include unseen transfers from accounts outside Ally
                 if ((detail2.Equals("REQUESTED TRANSFER FROM ALLY BANK")) ||
                     (detail2.Equals("CHASE CREDIT CRD EPAY~ FUTURE")))
                 {
-                    continue;
+                    continue; //These are not registered per client's request
                 }
                 else if (detail2.Equals(""))
                 {
-                    detail = detail1;
+                    detail = detail1; //Takes detail if only one line exists on PDF file
                 } 
                 else
                 {
-                    detail = detail2;
+                    detail = detail2; //Most needed detail comes from the second line on PDF file
                 }
 
                 double amount;
                 if (amount1.Equals(0))
                 {
-                    amount = amount2;
+                    amount = amount2; //Registers the debit amount
                 }
                 else
                 {
-                    amount = amount1;
+                    amount = amount1; //Registers the credit amount
                 }
+
                 Expense exp = new Expense(date, detail, amount);
-                if (amount.Equals(amount1))
+                if (amount.Equals(amount1)) //All credits are considered income to be added into money made
                 {
                     exp.Category = CategoryType.INCOME;
                 }
                 Expenses.Add(exp);
             }
-            IComparer comparer = new DateComparer();
-            Expenses.Sort(comparer);
+
+            IComparer comparer = new DateComparer(); //Sorts the Expenses ArrayList by Expense object month
+            Expenses.Sort(comparer); //Needed to help split PDF file tables that include two months
             return Expenses;
         }
     }
