@@ -28,7 +28,7 @@ namespace HerBudget
         /// <summary>
         /// Inherited method to create Expense object list catered specifically for Ally Bank PDF statements
         /// </summary>
-        /// <returns>ArryList of Expense objects</returns>
+        /// <returns>ArrayList of Expense objects</returns>
         public override ArrayList CreateExpenseList()
         {
             string pdfText = PreparePdf(this.PdfDoc);

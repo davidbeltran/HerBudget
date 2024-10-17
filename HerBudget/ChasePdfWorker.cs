@@ -12,12 +12,21 @@ namespace HerBudget
     /// </summary>
     public class ChasePdfWorker : PdfWorker
     {
+        /// <summary>
+        /// Subclass constructor
+        /// </summary>
+        /// <param name="fileStorage">XML file path holding list of PDF file names</param>
+        /// <param name="pdfDoc">Chase PDF file path</param>
         public ChasePdfWorker(string fileStorage, string pdfDoc) : base(fileStorage, pdfDoc)
         {
             this.ReDetail = "(?:\\n((?:0[1-9]|1[1,2])/(?:0[1-9]|[12][0-9]|3[01]))\\s*(.+)" +
                 " ((?:-\\d+\\.\\d{2})|(?:\\d+\\.\\d{2})))";
         }
 
+        /// <summary>
+        /// Inherited method to create Expense object list catered specifically for Chase Bank PDF statements
+        /// </summary>
+        /// <returns>ArrayList of Expense objects</returns>
         public override ArrayList CreateExpenseList()
         {
             string pdfText = PreparePdf(this.PdfDoc);
