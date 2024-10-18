@@ -133,6 +133,10 @@ namespace HerBudget
             return false;
         }
 
+        /// <summary>
+        /// Registers Expense object data to excel worksheet
+        /// </summary>
+        /// <param name="sheet">Current worksheet/month</param>
         private void AddBills(Excel._Worksheet sheet)
         {
             double Internet, Car_Insurance, Housing, Energy, Gas, Income,
@@ -145,11 +149,12 @@ namespace HerBudget
                 out Necessary, out Unnecessary, sheet);
                         
             DisplayInstructions();
+
             foreach (Expense exp in  Expenses)
             {
-                if (exp.Month == sheet.Name)
+                if (exp.Month == sheet.Name) //Organizes Expense month into proper worksheet month
                 {
-                    if (!exp.Category.Equals(CategoryType.EXPENSE))
+                    if (!exp.Category.Equals(CategoryType.EXPENSE)) //Automatically excel registered Expense objects
                     {
                         switch (exp.SubCategory)
                         {
@@ -166,7 +171,7 @@ namespace HerBudget
                             default: Income += exp.Amount; break;
                         }
                     }
-                    else
+                    else //Requires user clarification on subcategory of Expense object
                     {
                         AskUser(exp);
                         switch (exp.SubCategory)
@@ -185,8 +190,9 @@ namespace HerBudget
                 }
             }
 
-            MakeHeaders(sheet);
+            MakeHeaders(sheet); //Labels and headers added to worksheet first
 
+            //Expense amount total registered to excel worksheet
             //BILLS
             sheet.Cells[2, 3] = Internet;
             sheet.Cells[3, 3] = Car_Insurance;
