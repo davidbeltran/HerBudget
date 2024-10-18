@@ -286,6 +286,10 @@ namespace HerBudget
             return Value;
         }
 
+        /// <summary>
+        /// UI asking user to provide Subcategory of each Expense object
+        /// </summary>
+        /// <param name="exp">Current Expense object</param>
         private void AskUser(Expense exp)
         {
             string ResponseCheck;
