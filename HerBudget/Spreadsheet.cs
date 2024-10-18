@@ -114,6 +114,13 @@ namespace HerBudget
             }
             AddBills(worksheet);
         }
+
+        /// <summary>
+        /// Checks if sheet exists in workbook worksheets
+        /// </summary>
+        /// <param name="sheets">Existing workbook months</param>
+        /// <param name="exp">Current Expense object</param>
+        /// <returns>True if month already exists in workbook.</returns>
         private bool FindSheet(Excel.Sheets sheets, Expense exp)
         {
             foreach (Excel.Worksheet sheet in sheets)
