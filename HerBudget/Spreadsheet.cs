@@ -9,6 +9,9 @@ namespace HerBudget
 {
     public class Spreadsheet
     {
+        /// <summary>
+        /// Class that holds information for each transaction
+        /// </summary>
         public ArrayList Expenses { get; set; }
 
         public Spreadsheet(ArrayList expenses)
