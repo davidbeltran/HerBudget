@@ -82,7 +82,7 @@ namespace HerBudget
         /// <summary>
         /// Allows two months to be added. Used in AddToExcel() method
         /// </summary>
-        /// <param name="sheets">existing workbook months</param>
+        /// <param name="sheets">Existing workbook months</param>
         /// <param name="firstExp">First Expense object of list</param>
         /// <param name="lastExp">Last Expense object of list</param>
         private void AddBothMonths(Excel.Sheets sheets, Expense firstExp, Expense lastExp)
@@ -94,14 +94,19 @@ namespace HerBudget
             }
         }
 
+        /// <summary>
+        /// Adds one month at a time by checking if month exists in workbook
+        /// </summary>
+        /// <param name="sheets">Existing workbook months</param>
+        /// <param name="exp">Current Expense object</param>
         private void AddMonth(Excel.Sheets sheets, Expense exp)
         {
             Excel._Worksheet worksheet;
-            if (FindSheet(sheets, exp))
+            if (FindSheet(sheets, exp)) //curent sheet selected as existing month
             {
                 worksheet = (Excel.Worksheet)sheets[exp.Month];
             }
-            else
+            else //creates a new worksheet to add to workbook
             {
                 worksheet = (Excel.Worksheet)sheets.Add(sheets[sheets.Count],
                     System.Type.Missing, System.Type.Missing, System.Type.Missing);
