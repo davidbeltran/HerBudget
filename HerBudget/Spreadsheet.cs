@@ -323,6 +323,9 @@ namespace HerBudget
             }
         }
 
+        /// <summary>
+        /// Displays AskUser() UI instructions for user.
+        /// </summary>
         private void DisplayInstructions()
         {
             Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n*******************************************************************\n" + 
