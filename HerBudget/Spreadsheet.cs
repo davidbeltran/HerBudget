@@ -14,6 +14,10 @@ namespace HerBudget
         /// </summary>
         public ArrayList Expenses { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="expenses">ArrayList to hold Expense objects</param>
         public Spreadsheet(ArrayList expenses)
         {
             this.Expenses = expenses;
