@@ -220,6 +220,26 @@ namespace HerBudget
             sheet.Cells[26, 3] = "=C24-C22";
         }
 
+        /// <summary>
+        /// Scans current worksheet for possible existing amounts to be added to Expense objects with same months from different banks.
+        /// </summary>
+        /// <param name="Internet">Expense subcategory</param>
+        /// <param name="Car_Insurance">Expense subcategory</param>
+        /// <param name="Housing">Expense subcategory</param>
+        /// <param name="Energy">Expense subcategory</param>
+        /// <param name="Gas">Expense subcategory</param>
+        /// <param name="Income">Expense subcategory</param>
+        /// <param name="Phones">Expense subcategory</param>
+        /// <param name="Entertainment">Expense subcategory</param>
+        /// <param name="Dental">Expense subcategory</param>
+        /// <param name="Healthcare">Expense subcategory</param>
+        /// <param name="Savings">Expense subcategory</param>
+        /// <param name="Car_Gas">Expense subcategory</param>
+        /// <param name="Groceries">Expense subcategory</param>
+        /// <param name="Restaurant">Expense subcategory</param>
+        /// <param name="Necessary">Expense subcategory</param>
+        /// <param name="Unnecessary">Expense subcategory</param>
+        /// <param name="sheet">Current excel worksheet</param>
         private void FindCellValues(out double Internet, out double Car_Insurance, out double Housing,
             out double Energy, out double Gas, out double Income, out double Phones, out double Entertainment,
             out double Dental, out double Healthcare, out double Savings, out double Car_Gas, out double Groceries,
