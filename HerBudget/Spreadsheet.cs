@@ -79,6 +79,12 @@ namespace HerBudget
             }
         }
 
+        /// <summary>
+        /// Allows two months to be added. Used in AddToExcel() method
+        /// </summary>
+        /// <param name="sheets">existing workbook months</param>
+        /// <param name="firstExp">First Expense object of list</param>
+        /// <param name="lastExp">Last Expense object of list</param>
         private void AddBothMonths(Excel.Sheets sheets, Expense firstExp, Expense lastExp)
         {
             AddMonth(sheets, firstExp);
