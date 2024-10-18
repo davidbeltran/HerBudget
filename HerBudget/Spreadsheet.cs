@@ -335,6 +335,11 @@ namespace HerBudget
                 "1. Gas\n2. Groceries\n3. Restaurant\n4. Misc(Necessary)\n5. Misc(Unnecessary)");
         }
 
+        /// <summary>
+        /// Display each Expense object's details of transactions needing user subcategory selection
+        /// </summary>
+        /// <param name="exp">Current Expense object</param>
+        /// <returns>string value of user subcategory selection</returns>
         private string DisplayTransaction(Expense exp)
         {
             Console.WriteLine("\n\n\n" +
