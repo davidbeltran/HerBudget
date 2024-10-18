@@ -373,10 +373,10 @@ namespace HerBudget
             return catSelection;
         }
         /// <summary>
-        /// Default headers created
+        /// Default headers created in current Excel worksheet
         /// [Row, Column]
         /// </summary>
-        /// <param name="sheet">Excel sheet</param>
+        /// <param name="sheet">Current Excel sheet</param>
         private static void MakeHeaders(Excel._Worksheet sheet)
         {
             //Bold Headers 
