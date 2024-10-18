@@ -38,22 +38,25 @@ namespace HerBudget
             return sheetPath;
         }
 
+        /// <summary>
+        /// Loads Expense object data to Excel workbook
+        /// </summary>
         public void AddToExcel()
         {
-            Expense firstExp = (Expense)this.Expenses[0]!;
-            Expense lastExp = (Expense)this.Expenses[^1]!;
+            Expense firstExp = (Expense)this.Expenses[0]!; //First Expense object of list
+            Expense lastExp = (Expense)this.Expenses[^1]!; //Last Expense object of list
             string fullPath = MakeDirectory() + @"\Finances" + firstExp.Year + ".xlsx";
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
-            if (!File.Exists(fullPath))
+            if (!File.Exists(fullPath)) //Completely new workbook
             {
                 Excel.Workbook workbook = excel.Workbooks.Add();
                 Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
                 worksheet.Name = firstExp.Month;
                 AddBills(worksheet);
 
-                if (firstExp.Month != lastExp.Month)
+                if (firstExp.Month != lastExp.Month) //new month/sheet to existing workbook
                 {
                     worksheet = (Excel.Worksheet)workbook.Sheets.Add(workbook.Sheets[workbook.Sheets.Count],
                         System.Type.Missing, System.Type.Missing, System.Type.Missing);
@@ -64,7 +67,7 @@ namespace HerBudget
                 workbook.Close(false);
                 excel.Quit();
             }
-            else
+            else //adding data to existing worksheet months
             {
                 Excel.Workbook workbook = excel.Workbooks.Open(fullPath);
                 Excel.Sheets worksheets = workbook.Sheets;
