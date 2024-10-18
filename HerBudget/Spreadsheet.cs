@@ -263,6 +263,13 @@ namespace HerBudget
             Unnecessary = CellValue(19, 3, sheet);
         }
 
+        /// <summary>
+        /// Scans given cell for possible existing value
+        /// </summary>
+        /// <param name="row">Excel row</param>
+        /// <param name="column">Excel column</param>
+        /// <param name="sheet">Current worksheet</param>
+        /// <returns></returns>
         private double CellValue(int row, int column, Excel._Worksheet sheet)
         {
             double Value;
