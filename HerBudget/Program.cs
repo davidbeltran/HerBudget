@@ -8,7 +8,8 @@ namespace HerBudget
     {
         static void Main(string[] args)
         {
-            string pathPdf = "D:/afterGrad/c#/Adelisa/HerBudget/pdfs/MarApr24C.pdf";
+            PathCreator pc = new PathCreator("HerBudget\\pdfs", "MarApr24C.pdf");
+            string pathPdf = pc.MakeFile();
 
             Statement stmt = new Statement(pathPdf);
             stmt.SendToDatabase();

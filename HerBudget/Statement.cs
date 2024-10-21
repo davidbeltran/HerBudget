@@ -44,7 +44,8 @@ namespace HerBudget
         /// <returns>PdfWorker object corresponding to bank subclass</returns>
         private PdfWorker CreateWorker()
         {
-            string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/pdfs/idStore.xml";
+            PathCreator pc = new PathCreator("HerBudget\\storage", "idStore.xml");
+            string PdfNameStorage = pc.MakeFile();
             string ReBank = "A\\.pdf|C\\.pdf";
             Match m = Regex.Match(this.PathPdf, ReBank);
             PdfWorker? worker = null;

@@ -7,11 +7,11 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HerBudget
 {
+    /// <summary>
+    /// Class that holds information for each transaction
+    /// </summary>
     public class Spreadsheet
     {
-        /// <summary>
-        /// Class that holds information for each transaction
-        /// </summary>
         public ArrayList Expenses { get; set; }
 
         /// <summary>
@@ -24,28 +24,14 @@ namespace HerBudget
         }
 
         /// <summary>
-        /// Creates string of full path to include system's path
-        /// </summary>
-        /// <returns>the full path with unique in-system directories</returns>
-        private static string MakeDirectory()
-        {
-            string sheetPath = Directory.GetParent(Environment.CurrentDirectory)!.Parent!.FullName
-                + @"\HerBudget\sheets";
-            if (!Directory.Exists(sheetPath))
-            {
-                Directory.CreateDirectory(sheetPath);
-            }
-            return sheetPath;
-        }
-
-        /// <summary>
         /// Loads Expense object data to Excel workbook
         /// </summary>
         public void AddToExcel()
         {
             Expense firstExp = (Expense)this.Expenses[0]!; //First Expense object of list
             Expense lastExp = (Expense)this.Expenses[^1]!; //Last Expense object of list
-            string fullPath = MakeDirectory() + @"\Finances" + firstExp.Year + ".xlsx";
+            PathCreator pc = new PathCreator("HerBudget\\sheets", $"Finances{firstExp.Year}.xlsx");
+            string fullPath = pc.MakeFile();
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
