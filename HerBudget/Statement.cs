@@ -28,16 +28,14 @@ namespace HerBudget
         public void SendToDatabase()
         {
             PdfWorker worker = CreateWorker();
-            //if (!worker.CheckDuplicatePdf())
-            //{
-            //    Database db = new Database();
-            //    db.CreateTable(worker.CreateExpenseList());
-            //    db.CloseDatabase();
-            //    Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
-            //    ss.AddToExcel();
-            //}
-            string elPath = Directory.GetParent(Environment.CurrentDirectory)!.Parent!.FullName;
-            Console.WriteLine("esto" + elPath);
+            if (!worker.CheckDuplicatePdf())
+            {
+                Database db = new Database();
+                db.CreateTable(worker.CreateExpenseList());
+                db.CloseDatabase();
+                Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
+                ss.AddToExcel();
+            }
         }
 
         /// <summary>
@@ -46,7 +44,9 @@ namespace HerBudget
         /// <returns>PdfWorker object corresponding to bank subclass</returns>
         private PdfWorker CreateWorker()
         {
-            string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/pdfs/idStore.xml";
+            string PdfNameStorage = Directory.GetParent(Environment.CurrentDirectory)!.Parent!.FullName +
+                @"\HerBudget\storage\idStore.xml";
+            //string PdfNameStorage = @"D:/afterGrad/c#/Adelisa/HerBudget/pdfs/idStore.xml";
             string ReBank = "A\\.pdf|C\\.pdf";
             Match m = Regex.Match(this.PathPdf, ReBank);
             PdfWorker? worker = null;
