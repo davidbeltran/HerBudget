@@ -28,14 +28,16 @@ namespace HerBudget
         public void SendToDatabase()
         {
             PdfWorker worker = CreateWorker();
-            if (!worker.CheckDuplicatePdf())
-            {
-                Database db = new Database();
-                db.CreateTable(worker.CreateExpenseList());
-                db.CloseDatabase();
-                Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
-                ss.AddToExcel();
-            }
+            //if (!worker.CheckDuplicatePdf())
+            //{
+            //    Database db = new Database();
+            //    db.CreateTable(worker.CreateExpenseList());
+            //    db.CloseDatabase();
+            //    Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
+            //    ss.AddToExcel();
+            //}
+            string elPath = Directory.GetParent(Environment.CurrentDirectory)!.Parent!.FullName;
+            Console.WriteLine("esto" + elPath);
         }
 
         /// <summary>
