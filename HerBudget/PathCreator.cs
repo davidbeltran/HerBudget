@@ -7,7 +7,7 @@
 
         public PathCreator(string NewDirectory, string NewFile)
         {
-            this.NewDirectory = $"\\{NewDirectory}\\";
+            this.NewDirectory = $"\\{NewDirectory}";
             this.NewFile = $"\\{NewFile}";
         }
 
@@ -19,6 +19,11 @@
                 Directory.CreateDirectory(path);
             }
             return path;
+        }
+
+        public string MakeFile()
+        {
+            return MakeDirectory() + this.NewFile;
         }
     }
 }
