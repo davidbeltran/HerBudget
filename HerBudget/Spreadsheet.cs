@@ -7,11 +7,11 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HerBudget
 {
+    /// <summary>
+    /// Class that holds information for each transaction
+    /// </summary>
     public class Spreadsheet
     {
-        /// <summary>
-        /// Class that holds information for each transaction
-        /// </summary>
         public ArrayList Expenses { get; set; }
 
         /// <summary>
