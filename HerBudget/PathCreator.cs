@@ -1,4 +1,8 @@
-﻿namespace HerBudget
+﻿/*
+ * Author: David Beltran
+ */
+
+namespace HerBudget
 {
     public class PathCreator
     {
