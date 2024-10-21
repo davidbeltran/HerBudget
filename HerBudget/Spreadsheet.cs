@@ -24,21 +24,6 @@ namespace HerBudget
         }
 
         /// <summary>
-        /// Creates string of full path to include system's path
-        /// </summary>
-        /// <returns>the full path with unique in-system directories</returns>
-        private static string MakeDirectory()
-        {
-            string sheetPath = Directory.GetParent(Environment.CurrentDirectory)!.Parent!.FullName
-                + @"\HerBudget\sheets";
-            if (!Directory.Exists(sheetPath))
-            {
-                Directory.CreateDirectory(sheetPath);
-            }
-            return sheetPath;
-        }
-
-        /// <summary>
         /// Loads Expense object data to Excel workbook
         /// </summary>
         public void AddToExcel()
