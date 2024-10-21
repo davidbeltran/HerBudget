@@ -7,7 +7,7 @@
 
         public PathCreator(string NewDirectory, string NewFile)
         {
-            this.NewDirectory = $"\\{NewDirectory}";
+            this.NewDirectory = $"\\HerBudget\\{NewDirectory}";
             this.NewFile = $"\\{NewFile}";
         }
 
