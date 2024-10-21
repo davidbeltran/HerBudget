@@ -45,7 +45,9 @@ namespace HerBudget
         {
             Expense firstExp = (Expense)this.Expenses[0]!; //First Expense object of list
             Expense lastExp = (Expense)this.Expenses[^1]!; //Last Expense object of list
-            string fullPath = MakeDirectory() + @"\Finances" + firstExp.Year + ".xlsx";
+            PathCreator pc = new PathCreator("HerBudget\\sheets", $"Finances{firstExp.Year}.xlsx");
+            string fullPath = pc.MakeFile();
+            //string fullPath = MakeDirectory() + @"\Finances" + firstExp.Year + ".xlsx";
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
