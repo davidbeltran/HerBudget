@@ -2,6 +2,9 @@
  * Author: David Beltran
  */
 
+using System;
+using System.IO;
+
 namespace ConsoleHB
 {
     /// <summary>
