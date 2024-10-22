@@ -2,7 +2,9 @@
  * Author: David Beltran
  */
 
+using System;
 using System.Collections;
+using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ConsoleHB
