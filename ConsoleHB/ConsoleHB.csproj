@@ -125,7 +125,9 @@
   <ItemGroup>
     <Compile Include="AllyPdfWorker.cs" />
     <Compile Include="CategoryType.cs" />
+    <Compile Include="ChasePdfWorker.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="DateComparer.cs" />
     <Compile Include="Expense.cs" />
     <Compile Include="PathCreator.cs" />
     <Compile Include="PdfWorker.cs" />
