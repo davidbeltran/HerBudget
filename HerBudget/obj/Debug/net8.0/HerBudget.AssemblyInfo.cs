@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HerBudget")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8ad8e84f510dfff650201f2e7219ca0b11c03af")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b02ac2b307324910dba4e8112fdf5b13be721025")]
->>>>>>> move
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77502bf866d6cce1fde8cf042e6431862ce91a92")]
 [assembly: System.Reflection.AssemblyProductAttribute("HerBudget")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HerBudget")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
