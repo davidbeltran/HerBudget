@@ -46,7 +46,7 @@ namespace ConsoleHB
             }
 
             XDocument doc = XDocument.Load(this.FileStorage);
-            XElement? root = doc.Element("PdfFiles");
+            XElement root = doc.Element("PdfFiles");
             string pattern = @"[^/\\]+\.pdf$";//Regex for finding pdf file name at end of entire path
 
             if (root != null)

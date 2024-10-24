@@ -48,7 +48,7 @@ namespace ConsoleHB
             string PdfNameStorage = pc.MakeFile();
             string ReBank = "A\\.pdf|C\\.pdf";
             Match m = Regex.Match(this.PathPdf, ReBank);
-            PdfWorker? worker = null;
+            PdfWorker worker = null;
             switch (m.Value) //More can be added if different banks are used. Each bank will need own subclass
             {
                 case "A.pdf":
