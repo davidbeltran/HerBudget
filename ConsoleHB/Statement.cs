@@ -3,6 +3,7 @@
  */
 
 using System.Text.RegularExpressions;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ConsoleHB
 {
