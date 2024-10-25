@@ -32,8 +32,9 @@ namespace ConsoleHB
         {
             Expense firstExp = (Expense)this.Expenses[0]!; //First Expense object of list
             Expense lastExp = (Expense)this.Expenses[^1]!; //Last Expense object of list
-            PathCreator pc = new PathCreator("HerBudget\\sheets", $"Finances{firstExp.Year}.xlsx");
+            PathCreator pc = new PathCreator("sheets", $"Finances{firstExp.Year}.xlsx");
             string fullPath = pc.MakeFile();
+            Console.WriteLine($"HERE: {fullPath}");
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 

@@ -44,7 +44,7 @@ namespace ConsoleHB
         /// <returns>PdfWorker object corresponding to bank subclass</returns>
         private PdfWorker CreateWorker()
         {
-            PathCreator pc = new PathCreator("HerBudget\\storage", "idStore.xml");
+            PathCreator pc = new PathCreator("storage", "idStore.xml");
             string PdfNameStorage = pc.MakeFile();
             string ReBank = "A\\.pdf|C\\.pdf";
             Match m = Regex.Match(this.PathPdf, ReBank);

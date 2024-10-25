@@ -33,8 +33,6 @@ namespace ConsoleHB
         private string MakeDirectory()
         {
             string path = Directory.GetParent(Environment.CurrentDirectory)!.Parent!.FullName + this.NewDirectory;
-            string otro = Directory.GetParent(Environment.CurrentDirectory)!.Parent!.FullName;
-            Console.WriteLine($"HERE: {otro}");
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
