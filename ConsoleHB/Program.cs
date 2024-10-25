@@ -8,10 +8,10 @@ namespace ConsoleHB
     {
         static void Main(string[] args)
         {
-            //PathCreator pc = new PathCreator("pdfs", "MarApr24C.pdf");
-            //string pathPdf = pc.MakeFile();
+            PathCreator pc = new PathCreator("pdfs", "MarApr24C.pdf");
+            string pathPdf = pc.MakeFile();
 
-            Statement stmt = new Statement(@"D:\afterGrad\c#\Adelisa\HerBudget\ConsoleHB\bin\pdfs\MarApr24C.pdf");
+            Statement stmt = new Statement(pathPdf);
             stmt.SendToDatabase();
         }
     }

@@ -34,26 +34,27 @@ namespace ConsoleHB
             Expense lastExp = (Expense)this.Expenses[^1]!; //Last Expense object of list
             PathCreator pc = new PathCreator("sheets", $"Finances{firstExp.Year}.xlsx");
             string fullPath = pc.MakeFile();
+            Console.WriteLine($"AT AddtoExcel(): {fullPath}");
             //Excel.Application excel = new Excel.Application();
             //excel.Visible = false;
 
             //if (!File.Exists(fullPath)) //Completely new workbook
             //{
-                //Excel.Workbook workbook = excel.Workbooks.Add();
-                //Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
-                //worksheet.Name = firstExp.Month;
-                //    AddBills(worksheet);
+            //Excel.Workbook workbook = excel.Workbooks.Add();
+            //Excel._Worksheet worksheet = (Excel.Worksheet)excel.ActiveSheet;
+            //worksheet.Name = firstExp.Month;
+            //    AddBills(worksheet);
 
-                //    if (firstExp.Month != lastExp.Month) //new month/sheet to existing workbook
-                //    {
-                //        worksheet = (Excel.Worksheet)workbook.Sheets.Add(workbook.Sheets[workbook.Sheets.Count],
-                //            System.Type.Missing, System.Type.Missing, System.Type.Missing);
-                //        worksheet.Name = lastExp.Month;
-                //        AddBills(worksheet);
-                //    }
-                //workbook.SaveAs(fullPath);
-                //workbook.Close(false);
-                //excel.Quit();
+            //    if (firstExp.Month != lastExp.Month) //new month/sheet to existing workbook
+            //    {
+            //        worksheet = (Excel.Worksheet)workbook.Sheets.Add(workbook.Sheets[workbook.Sheets.Count],
+            //            System.Type.Missing, System.Type.Missing, System.Type.Missing);
+            //        worksheet.Name = lastExp.Month;
+            //        AddBills(worksheet);
+            //    }
+            //workbook.SaveAs(fullPath);
+            //workbook.Close(false);
+            //excel.Quit();
             //}
             //else //adding data to existing worksheet months
             //{

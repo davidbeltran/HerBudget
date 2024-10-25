@@ -28,16 +28,14 @@ namespace ConsoleHB
         public void SendToDatabase()
         {
             PdfWorker worker = CreateWorker();
-            //if (!worker.CheckDuplicatePdf())
-            //{
+            if (!worker.CheckDuplicatePdf())
+            {
                 //Database db = new Database();
                 //db.CreateTable(worker.CreateExpenseList());
                 //db.CloseDatabase();
-                //Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
-                //ss.AddToExcel();
-            //}
-            Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
-            ss.AddToExcel();
+                Spreadsheet ss = new Spreadsheet(worker.CreateExpenseList());
+                ss.AddToExcel();
+            }
         }
 
         /// <summary>
@@ -47,8 +45,7 @@ namespace ConsoleHB
         private PdfWorker CreateWorker()
         {
             PathCreator pc = new PathCreator("storage", "idStore.xml");
-            //string PdfNameStorage = pc.MakeFile();
-            string PdfNameStorage = @"D:\afterGrad\c#\Adelisa\HerBudget\ConsoleHB\bin\storage\idStore.xml";
+            string PdfNameStorage = pc.MakeFile();
             string ReBank = "A\\.pdf|C\\.pdf";
             Match m = Regex.Match(this.PathPdf, ReBank);
             PdfWorker worker = null;
