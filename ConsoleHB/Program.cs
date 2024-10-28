@@ -20,6 +20,6 @@ namespace ConsoleHB
  * To ensure program can be ran on different project:
  * - Navigate to Project > Add Project References... > Browse
  * - Select both OFFICE.DLL and Microsoft.Office.Interop.Excel.dll
- * - Make sure to clean and build solution
- * - Should work properly now
+ * - Make sure to clean and build solution.
+ * - Should work properly now.
 */
