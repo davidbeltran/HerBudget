@@ -34,7 +34,6 @@ namespace ConsoleHB
             Expense lastExp = (Expense)this.Expenses[^1]!; //Last Expense object of list
             PathCreator pc = new PathCreator("sheets", $"Finances{firstExp.Year}.xlsx");
             string fullPath = pc.MakeFile();
-            Console.WriteLine($"AT AddtoExcel(): {fullPath}");
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
