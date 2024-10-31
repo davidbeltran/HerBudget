@@ -230,7 +230,7 @@ namespace ConsoleHB
         /// <param name="sheet">Current excel worksheet</param>
         private void FindCellValues(out double Internet, out double Car_Insurance, out double Housing,
             out double Energy, out double Gas, out double Income, out double Phones, out double Entertainment,
-            out double Dental, out double Healthcare, out double Savings, out double Car_Gas, out double Groceries,
+            out double Dental, out double Healthcare, out double Car_Gas, out double Groceries,
             out double Restaurant, out double Necessary, out double Unnecessary, Excel._Worksheet sheet)
         {
             Internet = CellValue(2, 3, sheet);
