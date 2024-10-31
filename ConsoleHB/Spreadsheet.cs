@@ -155,7 +155,7 @@ namespace ConsoleHB
                             case SubCategoryType.TV: Entertainment += exp.Amount; break;
                             case SubCategoryType.DENTAL: Dental += exp.Amount; break;
                             case SubCategoryType.HEALTHCARE: Healthcare += exp.Amount; break;
-                            case SubCategoryType.SAVINGS: Savings += exp.Amount; break;
+                            //case SubCategoryType.SAVINGS: Savings += exp.Amount; break;
                             default: Income += exp.Amount; break;
                         }
                     }
@@ -191,7 +191,7 @@ namespace ConsoleHB
             sheet.Cells[8, 3] = Entertainment;
             sheet.Cells[9, 3] = Dental;
             sheet.Cells[10, 3] = Healthcare;
-            sheet.Cells[11, 3] = Savings;
+            //sheet.Cells[11, 3] = Savings;
             sheet.Cells[12, 3] = "=SUM(C2:C11)";
 
             //EXPENSES
