@@ -128,7 +128,7 @@ namespace ConsoleHB
         private void AddBills(Excel._Worksheet sheet)
         {
             double Internet, Car_Insurance, Housing, Energy, Gas, Income,
-                Phones, Entertainment, Dental, Healthcare, Savings, Car_Gas,
+                Phones, Entertainment, Dental, Healthcare, Car_Gas,
                 Groceries, Restaurant, Necessary, Unnecessary;
 
             FindCellValues(out Internet, out Car_Insurance, out Housing, out Energy, out Gas,

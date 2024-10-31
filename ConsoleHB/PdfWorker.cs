@@ -11,7 +11,6 @@ using System.Xml.Linq;
 using System.IO;
 using System;
 using System.Linq;
-using UglyToad.PdfPig.Core;
 
 namespace ConsoleHB
 {
