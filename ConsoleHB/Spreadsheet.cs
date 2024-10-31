@@ -243,7 +243,7 @@ namespace ConsoleHB
             Entertainment = CellValue(8, 3, sheet);
             Dental = CellValue(9, 3, sheet);
             Healthcare = CellValue(10, 3, sheet);
-            Savings = CellValue(11, 3, sheet);
+            //Savings = CellValue(11, 3, sheet);
             Car_Gas = CellValue(15, 3, sheet);
             Groceries = CellValue(16, 3, sheet);
             Restaurant = CellValue(17, 3, sheet);
@@ -389,7 +389,7 @@ namespace ConsoleHB
             sheet.Cells[8, 1] = "Entertainment";
             sheet.Cells[9, 1] = "Dental";
             sheet.Cells[10, 1] = "Healthcare";
-            sheet.Cells[11, 1] = "Savings";
+            //sheet.Cells[11, 1] = "Savings";
 
             //Bill labels
             sheet.Cells[2, 2] = "Spectrum";
