@@ -47,7 +47,8 @@ namespace ConsoleHB
                 string detail;
                 //May need to add 'or' statement to include unseen transfers from accounts outside Ally
                 if ((detail2.Equals("REQUESTED TRANSFER FROM ALLY BANK")) ||
-                    (detail2.Equals("CHASE CREDIT CRD EPAY~ FUTURE")))
+                    (detail2.Equals("CHASE CREDIT CRD EPAY~ FUTURE")) ||
+                    (detail2.Equals("REQUESTED TRANSFER TO ALLY BANK SAVINGS")))
                 {
                     continue; //These are not registered per client's request
                 }
