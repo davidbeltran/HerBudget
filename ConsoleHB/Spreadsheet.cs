@@ -401,7 +401,7 @@ namespace ConsoleHB
             sheet.Cells[8, 2] = "TV";
             sheet.Cells[9, 2] = "Delta";
             sheet.Cells[10, 2] = "Kaiser";
-            sheet.Cells[11, 2] = "Ally";
+            //sheet.Cells[11, 2] = "Ally";
 
             //Expense labels
             sheet.Cells[15, 2] = "Car Gas";
