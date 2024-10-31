@@ -44,7 +44,7 @@ namespace ConsoleHB
                 worksheet.Name = firstExp.Month;
                 AddBills(worksheet);
 
-                if (firstExp.Month != lastExp.Month) //new month/sheet to existing workbook
+                if (firstExp.Month != lastExp.Month) //new month/sheet on existing workbook
                 {
                     worksheet = (Excel.Worksheet)workbook.Sheets.Add(workbook.Sheets[workbook.Sheets.Count],
                         System.Type.Missing, System.Type.Missing, System.Type.Missing);
