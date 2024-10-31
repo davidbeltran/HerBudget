@@ -133,7 +133,7 @@ namespace ConsoleHB
 
             FindCellValues(out Internet, out Car_Insurance, out Housing, out Energy, out Gas,
                 out Income, out Phones, out Entertainment, out Dental, out Healthcare,
-                out Savings, out Car_Gas, out Groceries, out Restaurant,
+                out Car_Gas, out Groceries, out Restaurant,
                 out Necessary, out Unnecessary, sheet);
                         
             DisplayInstructions();
