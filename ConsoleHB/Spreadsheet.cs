@@ -273,7 +273,6 @@ namespace ConsoleHB
             {
                 Value = 0.0;
             }
-            Console.WriteLine($"value: {Value} row/column: {row}/{column}");
             return Value;
         }
 
