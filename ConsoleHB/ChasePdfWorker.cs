@@ -20,7 +20,7 @@ namespace ConsoleHB
         /// <param name="pdfDoc">Chase PDF file path</param>
         public ChasePdfWorker(string fileStorage, string pdfDoc) : base(fileStorage, pdfDoc)
         {
-            this.ReDetail = "(?:\\n((?:0[1-9]|1[1,2])/(?:0[1-9]|[12][0-9]|3[01]))\\s*(.+)" +
+            this.ReDetail = "(?:\\n((?:0[1-9]|1[0-2])/(?:0[1-9]|[12][0-9]|3[01]))\\s*(.+)" +
                 " ((?:-\\d+\\.\\d{2})|(?:\\d+\\.\\d{2})))";
         }
 

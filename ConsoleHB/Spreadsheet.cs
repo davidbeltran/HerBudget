@@ -37,6 +37,7 @@ namespace ConsoleHB
             Excel.Application excel = new Excel.Application();
             excel.Visible = false;
 
+            Console.WriteLine($"HERE: first: {firstExp.Month} last: {lastExp.Month}");
             if (!File.Exists(fullPath)) //Completely new workbook
             {
                 Excel.Workbook workbook = excel.Workbooks.Add();

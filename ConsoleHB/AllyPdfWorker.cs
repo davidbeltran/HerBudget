@@ -20,7 +20,7 @@ namespace ConsoleHB
         /// <param name="pdfDoc">Ally PDF file path</param>
         public AllyPdfWorker(string fileStorage, string pdfDoc) : base(fileStorage, pdfDoc)
         {
-            this.ReDetail = "(?:((?:0[1-9]|1[1,2])/(?:0[1-9]|[1-2][0-9]|3[0-1])/(?:\\d{4})) " +
+            this.ReDetail = "(?:((?:0[1-9]|1[0-2])/(?:0[1-9]|[1-2][0-9]|3[0-1])/(?:\\d{4})) " +
             "(Check Card Purchase|ACH Withdrawal|Direct Deposit|Interest Paid|" +
             "WEB Funds Transfer|NOW Withdrawal|NOW Deposit|eCheck Deposit)\\s" +
             "(\\n.*\\s)?(?:.*\\s)*?\\$(.+\\.\\d{2}) -\\$(.+\\.\\d{2}) (?:-?\\$.+\\.\\d{2}[\\s|A]))";
@@ -81,6 +81,7 @@ namespace ConsoleHB
 
             IComparer comparer = new DateComparer(); //Sorts the Expenses ArrayList by Expense object month
             Expenses.Sort(comparer); //Needed to help split PDF file tables that include two months
+
             return Expenses;
         }
     }

@@ -8,7 +8,7 @@ namespace HerBudget
     {
         static void Main(string[] args)
         {
-            PathCreator pc = new PathCreator("HerBudget\\pdfs", "MarApr24C.pdf");
+            PathCreator pc = new PathCreator("HerBudget\\pdfs", "SepOct24A.pdf");
             string pathPdf = pc.MakeFile();
 
             Statement stmt = new Statement(pathPdf);
