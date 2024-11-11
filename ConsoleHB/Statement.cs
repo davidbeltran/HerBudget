@@ -2,8 +2,10 @@
  * Author: David Beltran
  */
 
+using System.Collections;
 using System.Text.RegularExpressions;
 using Excel = Microsoft.Office.Interop.Excel;
+using System;
 
 namespace ConsoleHB
 {
