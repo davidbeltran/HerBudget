@@ -41,7 +41,7 @@ namespace ConsoleHB
         /// </summary>
         private void Categorize()
         {
-            string ReCat = "CENTRE CLUB|SPECTRUM|UNITED FIN CAS INS|SO CAL EDISON|SO CAL GAS|DISNEY|" +
+            string ReCat = "CENTRE CLUB|SPECTRUM|UNITED FIN CAS INS|SO CAL EDISON|SO CAL GAS|DISNEY|DEPT EDUCATION STUDENT LN|" +
                 "ATT PAYMENT|HULU|PEACOCK|SLING|KAISER|DELTACARE|REQUESTED TRANSFER TO ALLY BANK SAVINGS";
 
             if (Regex.IsMatch(this.Detail, ReCat))
