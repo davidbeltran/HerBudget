@@ -244,6 +244,8 @@ namespace ConsoleHB
             Dental = CellValue(9, 3, sheet);
             Healthcare = CellValue(10, 3, sheet);
             Stud_Ln = CellValue(11, 3, sheet);
+            Console.WriteLine($"HERE: {Stud_Ln}");
+            Console.WriteLine($"HERE2: {CellValue(11, 3, sheet)}");
             Car_Gas = CellValue(15, 3, sheet);
             Groceries = CellValue(16, 3, sheet);
             Restaurant = CellValue(17, 3, sheet);
@@ -271,6 +273,7 @@ namespace ConsoleHB
             {
                 Value = 0.0;
             }
+            Console.WriteLine($"value: {Value} row/column: {row}/{column}");
             return Value;
         }
 
