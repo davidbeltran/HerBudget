@@ -127,12 +127,12 @@ namespace ConsoleHB
         /// <param name="sheet">Current worksheet/month</param>
         private void AddBills(Excel._Worksheet sheet)
         {
-            double Internet, Car_Insurance, Housing, Energy, Gas, Income,
+            double Internet, Car_Insurance, Housing, Energy, Gas, Income, Stud_Ln,
                 Phones, Entertainment, Dental, Healthcare, Car_Gas,
                 Groceries, Restaurant, Necessary, Unnecessary;
 
             FindCellValues(out Internet, out Car_Insurance, out Housing, out Energy, out Gas,
-                out Income, out Phones, out Entertainment, out Dental, out Healthcare,
+                out Income, out Stud_Ln,out Phones, out Entertainment, out Dental, out Healthcare,
                 out Car_Gas, out Groceries, out Restaurant,
                 out Necessary, out Unnecessary, sheet);
                         
@@ -221,14 +221,14 @@ namespace ConsoleHB
         /// <param name="Entertainment">Expense subcategory</param>
         /// <param name="Dental">Expense subcategory</param>
         /// <param name="Healthcare">Expense subcategory</param>
-        /// <param name="Savings">Expense subcategory</param>
+        /// <param name="Stud_Ln">Expense subcategory</param>
         /// <param name="Car_Gas">Expense subcategory</param>
         /// <param name="Groceries">Expense subcategory</param>
         /// <param name="Restaurant">Expense subcategory</param>
         /// <param name="Necessary">Expense subcategory</param>
         /// <param name="Unnecessary">Expense subcategory</param>
         /// <param name="sheet">Current excel worksheet</param>
-        private void FindCellValues(out double Internet, out double Car_Insurance, out double Housing,
+        private void FindCellValues(out double Internet, out double Car_Insurance, out double Housing, out double Stud_Ln,
             out double Energy, out double Gas, out double Income, out double Phones, out double Entertainment,
             out double Dental, out double Healthcare, out double Car_Gas, out double Groceries,
             out double Restaurant, out double Necessary, out double Unnecessary, Excel._Worksheet sheet)
@@ -243,7 +243,7 @@ namespace ConsoleHB
             Entertainment = CellValue(8, 3, sheet);
             Dental = CellValue(9, 3, sheet);
             Healthcare = CellValue(10, 3, sheet);
-            //Savings = CellValue(11, 3, sheet);
+            Stud_Ln = CellValue(11, 3, sheet);
             Car_Gas = CellValue(15, 3, sheet);
             Groceries = CellValue(16, 3, sheet);
             Restaurant = CellValue(17, 3, sheet);

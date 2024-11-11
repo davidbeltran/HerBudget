@@ -79,8 +79,8 @@ namespace ConsoleHB
                     this.SubCategory = SubCategoryType.HEALTHCARE; break;
                 case "DELTACARE":
                     this.SubCategory = SubCategoryType.DENTAL; break;
-                //case "REQUESTED TRANSFER TO ALLY BANK SAVINGS":
-                //    this.SubCategory = SubCategoryType.SAVINGS; break;
+                case "DEPT EDUCATION STUDENT LN":
+                    this.SubCategory = SubCategoryType.STUD_LN; break;
                 default:
                     this.SubCategory = null; break;
             }
