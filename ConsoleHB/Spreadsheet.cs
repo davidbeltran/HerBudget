@@ -131,6 +131,7 @@ namespace ConsoleHB
                 Phones, Entertainment, Dental, Healthcare, Car_Gas,
                 Groceries, Restaurant, Necessary, Unnecessary;
 
+            //If adding category, ensure to place attribute in same location as method statement below
             FindCellValues(out Internet, out Car_Insurance, out Housing, out Stud_Ln, out Energy, out Gas,
                 out Income, out Phones, out Entertainment, out Dental, out Healthcare,
                 out Car_Gas, out Groceries, out Restaurant,
