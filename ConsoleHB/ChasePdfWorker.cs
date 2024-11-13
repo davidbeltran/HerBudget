@@ -37,20 +37,21 @@ namespace ConsoleHB
             foreach (Match match in matches)
             {
                 DateTime date = DateTime.Parse($"{match.Groups[1].Value}/{GetYear()}");
-                //string detail = match.Groups[2].Value.ToUpper();
-                string detailTemp = match.Groups[2].Value;
-                string detail = detailTemp.ToUpper();
+                string detail = match.Groups[2].Value.ToUpper();
+                //string detailTemp = match.Groups[2].Value;
+                //string detail = detailTemp.ToUpper();
                 double amount = double.Parse(match.Groups[3].Value);
-                if ((amount < 0) && (!Regex.IsMatch(detailTemp, "Offer:")))
+                if ((amount < 0) && (!Regex.IsMatch(detail, "OFFER:")))
                 {
                     continue; //Unregistered credits paid from Ally/checking account to credit card account
                 }
                 Expense exp = new Expense(date, detail, amount);
-                if ((amount < 0) && (Regex.IsMatch(detailTemp, "Offer:"))) //Credits that come from outside client expense circulation
+                if ((amount < 0) && (Regex.IsMatch(detail, "OFFER:"))) //Credits that come from outside client expense circulation
                 {
                     exp.Amount = Math.Abs(amount);
                     exp.Category = CategoryType.INCOME;
                     exp.SubCategory = null;
+                    Console.WriteLine($"HERE: {exp.Detail}  | amount: {exp.Amount}");
                 }
                 ExpenseList.Add(exp);
             }
