@@ -20,8 +20,12 @@ namespace ConsoleHB
         /// <param name="pdfDoc">Chase PDF file path</param>
         public ChasePdfWorker(string fileStorage, string pdfDoc) : base(fileStorage, pdfDoc)
         {
+            //this.ReDetail = "(?:\\n((?:0[1-9]|1[0-2])/(?:0[1-9]|[12][0-9]|3[01]))\\s*(.+)" +
+            //    " ((?:-\\d+\\.\\d{2})|(?:\\d+\\.\\d{2})))";
+            //this.ReDetail = @"(\d{2}/\d{2})\s+(.+?)\s+(-?\d+\.\d{2})";
+            //this.ReDetail = @"(\d{2}/\d{2})\s+(.+?)\s+(-?\d*\.?\d{2})";
             this.ReDetail = "(?:\\n((?:0[1-9]|1[0-2])/(?:0[1-9]|[12][0-9]|3[01]))\\s*(.+)" +
-                " ((?:-\\d+\\.\\d{2})|(?:\\d+\\.\\d{2})))";
+                " ((?:-\\d+\\.\\d{2})|(?:\\d*\\.\\d{2})))";
         }
 
         /// <summary>
@@ -31,6 +35,7 @@ namespace ConsoleHB
         public override ArrayList CreateExpenseList()
         {
             string pdfText = PreparePdf(this.PdfDoc);
+            Console.WriteLine(pdfText);
             MatchCollection matches = Regex.Matches(pdfText, this.ReDetail);
             ArrayList ExpenseList = new ArrayList();
 
