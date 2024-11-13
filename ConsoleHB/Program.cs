@@ -8,7 +8,7 @@ namespace ConsoleHB
     {
         static void Main(string[] args)
         {
-            PathCreator pc = new PathCreator("pdfs", "SepOct24C.pdf");
+            PathCreator pc = new PathCreator("pdfs", "AugSep24C.pdf");
             string pathPdf = pc.MakeFile();
 
             Statement stmt = new Statement(pathPdf);
