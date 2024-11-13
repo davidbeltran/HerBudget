@@ -38,8 +38,6 @@ namespace ConsoleHB
             {
                 DateTime date = DateTime.Parse($"{match.Groups[1].Value}/{GetYear()}");
                 string detail = match.Groups[2].Value.ToUpper();
-                //string detailTemp = match.Groups[2].Value;
-                //string detail = detailTemp.ToUpper();
                 double amount = double.Parse(match.Groups[3].Value);
                 Console.WriteLine($"MATCH: {detail} | mAmount: {amount}");
                 if ((amount < 0) && (!Regex.IsMatch(detail, "OFFER:")))
