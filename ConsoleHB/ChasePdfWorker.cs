@@ -41,6 +41,7 @@ namespace ConsoleHB
                 //string detailTemp = match.Groups[2].Value;
                 //string detail = detailTemp.ToUpper();
                 double amount = double.Parse(match.Groups[3].Value);
+                Console.WriteLine($"MATCH: {detail} | mAmount: {amount}");
                 if ((amount < 0) && (!Regex.IsMatch(detail, "OFFER:")))
                 {
                     continue; //Unregistered credits paid from Ally/checking account to credit card account
@@ -51,11 +52,6 @@ namespace ConsoleHB
                     exp.Amount = Math.Abs(amount);
                     exp.Category = CategoryType.INCOME;
                     exp.SubCategory = null;
-                    Console.WriteLine($"HERE: {exp.Detail}  | amount: {exp.Amount}");
-                }
-                else if ((amount < 0))
-                {
-                    Console.WriteLine($"DID NOT WORK: {exp.Detail}  | amount: {exp.Amount}");
                 }
                 ExpenseList.Add(exp);
             }
