@@ -53,6 +53,10 @@ namespace ConsoleHB
                     exp.SubCategory = null;
                     Console.WriteLine($"HERE: {exp.Detail}  | amount: {exp.Amount}");
                 }
+                else if ((amount < 0))
+                {
+                    Console.WriteLine($"DID NOT WORK: {exp.Detail}  | amount: {exp.Amount}");
+                }
                 ExpenseList.Add(exp);
             }
             IComparer comparer = new DateComparer(); //Sorts the Expenses ArrayList by Expense object month
