@@ -20,12 +20,6 @@ namespace ConsoleHB
         /// <param name="pdfDoc">Chase PDF file path</param>
         public ChasePdfWorker(string fileStorage, string pdfDoc) : base(fileStorage, pdfDoc)
         {
-            //this.ReDetail = "(?:\\n((?:0[1-9]|1[0-2])/(?:0[1-9]|[12][0-9]|3[01]))\\s*(.+)" +
-            //    " ((?:-\\d+\\.\\d{2})|(?:\\d+\\.\\d{2})))";
-            //this.ReDetail = @"(\d{2}/\d{2})\s+(.+?)\s+(-?\d+\.\d{2})";
-            //this.ReDetail = @"(\d{2}/\d{2})\s+(.+?)\s+(-?\d*\.?\d{2})";
-            //this.ReDetail = "(?:\\n((?:0[1-9]|1[0-2])/(?:0[1-9]|[12][0-9]|3[01]))\\s*(.+)" +
-            //    " ((?:-\\d+\\.\\d{2})|(?:\\d*\\.\\d{2})))";
             this.ReDetail = @"(\d{2}/\d{2})\s+(.+?)\s+(-?\d*\.\d{2})";
         }
 
@@ -44,7 +38,7 @@ namespace ConsoleHB
                 DateTime date = DateTime.Parse($"{match.Groups[1].Value}/{GetYear()}");
                 string detail = match.Groups[2].Value.ToUpper();
                 double amount = double.Parse(match.Groups[3].Value);
-                Console.WriteLine($"MATCH: {detail} | mAmount: {amount}");
+
                 if ((amount < 0) && (!Regex.IsMatch(detail, "OFFER:")))
                 {
                     continue; //Unregistered credits paid from Ally/checking account to credit card account
