@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections;
+using System.IO;
 using System.Text.RegularExpressions;
 
 namespace ConsoleHB
@@ -36,6 +37,9 @@ namespace ConsoleHB
         {
             string pdfText = PreparePdf(this.PdfDoc);
             Console.WriteLine(pdfText);
+            PathCreator pc = new PathCreator("tester", "test.txt");
+            string pathPdf = pc.MakeFile();
+            File.WriteAllText(pathPdf, pdfText);
             MatchCollection matches = Regex.Matches(pdfText, this.ReDetail);
             ArrayList ExpenseList = new ArrayList();
 
